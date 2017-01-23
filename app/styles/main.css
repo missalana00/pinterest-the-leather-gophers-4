@@ -40,11 +40,10 @@
   background-image: url('http://ichef-1.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
-
 }
 
 .saveButton {
   position: absolute;
   right: 10px;
-  top: 10px
+  top: 10px;
 }

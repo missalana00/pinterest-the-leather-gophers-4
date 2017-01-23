@@ -33,8 +33,12 @@
 
 
     <md-grid-tile ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-      <md-button class="md-raised md-primary saveButton" ng-show="open">Save</md-button>
-      <md-grid-tile-footer>
+      <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
+        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+      </md-button> -->
+
+      <md-button class="md-raised md-warn saveButton" ng-show="open">Save</md-button>
+      <md-grid-tile-footer ng-show="open">
         <h3>#5: (2r x 2c)</h3>
       </md-grid-tile-footer>
     </md-grid-tile>
