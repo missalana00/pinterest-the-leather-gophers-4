@@ -6,6 +6,7 @@
 
 
 
+
 /***********
 User Profile Page
 ****************/
@@ -24,5 +25,48 @@ User Profile Page
 /*sets color of userImage border, and pulls userImage higher up into the card*/
 .userImage {
   margin-top: -25%;
-  border: 2px solid rgb(255,64,129);
+  border: 2px solid rgb(255, 64, 129);
+}
+
+
+
+  /**************
+    Pin styling
+  **************/
+
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px; }
+
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5; }
+
+.gridListdemoBasicUsage .green {
+  background: #b9f6ca; }
+
+.gridListdemoBasicUsage .yellow {
+  background: #ffff8d; }
+
+.gridListdemoBasicUsage .blue {
+  background: #84ffff; }
+
+.gridListdemoBasicUsage .purple {
+  background: #b388ff; }
+
+.gridListdemoBasicUsage .red {
+  background: #ff8a80; }
+
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
+
+.card {
+  background-image: url('http://ichef-1.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.saveButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
 }
