@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="app/lib/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="app/styles/main.css">
+</head>
+<body ng-app="myApp">
+
+
+<div ng-controller="AppCtrl" ng-cloak>
+  <md-content class="md-padding">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-href="#/" name="page1">Home</md-nav-item>
+      <md-nav-item md-nav-href="#/login" name="page2">Login</md-nav-item>
+      <md-nav-item md-nav-href="#/profile" name="page3">Profile</md-nav-item>
+
+      <md-nav-item md-nav-href="#/" name="page4">???</md-nav-item>
+      <md-nav-item md-nav-href="#/second" name="page5">???</md-nav-item>
+
+    </md-nav-bar>
+  </md-content>
+
+<div class="container">
+  <div ng-view></div>
+</div>
+<script src="app/lib/angular/angular.js"></script>
+<script src="app/lib/angular-material/angular-material.min.js"></script>
+<script src="app/lib/angular-animate/angular-animate.min.js"></script>
+<script src="app/lib/angular-aria/angular-aria.min.js"></script>
+<script src="app/lib/angular-messages/angular-messages.min.js"></script>
+<script src="app/lib/angular-route/angular-route.js"></script>
+<script src="app/app.js"></script>
+<script src="app/config.js"></script>
+<script src="app/controllers/first.js"></script>
+<script src="app/controllers/app.Ctrl.js"></script>
+<script src="app/controllers/second.js"></script>
+<script src="app/controllers/third.js"></script>
+<script src="app/factories/getFactory.js"></script>
+
+</body>
+</html>
