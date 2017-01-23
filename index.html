@@ -22,7 +22,7 @@
     </md-nav-bar>
   </md-content>
 
-</div>
+
 
 <!-- Pin cards -->
 
@@ -32,25 +32,8 @@
 
 
 
-    <md-grid-tile class="test" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-      <md-grid-tile-footer>
-        <h3>#5: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile class="red" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-      <md-grid-tile-footer>
-        <h3>#5: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile class="red" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-      <md-grid-tile-footer>
-        <h3>#5: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile class="red" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+    <md-grid-tile ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+      <md-button class="md-raised md-primary saveButton" ng-show="open">Save</md-button>
       <md-grid-tile-footer>
         <h3>#5: (2r x 2c)</h3>
       </md-grid-tile-footer>
@@ -61,6 +44,7 @@
   </md-grid-list>
 </div>
 
+</div>
 <!-- End Pin cards -->
 
 <div class="container">
