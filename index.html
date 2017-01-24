@@ -17,22 +17,12 @@
       <md-nav-item md-nav-href="#/login" name="page2">Login</md-nav-item>
       <md-nav-item md-nav-href="#/profile" name="page3">Profile</md-nav-item>
 
-      <md-nav-item md-nav-href="#/" name="page4">???</md-nav-item>
+      <md-nav-item md-nav-href="#/third" name="page4">???</md-nav-item>
       <md-nav-item md-nav-href="#/second" name="page5">???</md-nav-item>
 
     </md-nav-bar>
   </md-content>
 </div>
-
-
-
- <!--Pin cards-->
-
-
-
-
-
-<!-- End Pin cards -->
 
 <div class="container">
   <div ng-view></div>
@@ -43,6 +33,7 @@
 <script src="app/lib/angular-aria/angular-aria.min.js"></script>
 <script src="app/lib/angular-messages/angular-messages.min.js"></script>
 <script src="app/lib/angular-route/angular-route.js"></script>
+<script src="app/lib/firebase/firebase.js"></script>
 <script src="app/app.js"></script>
 <script src="app/config.js"></script>
 <script src="app/controllers/first.js"></script>
@@ -50,6 +41,8 @@
 <script src="app/controllers/second.js"></script>
 <script src="app/controllers/third.js"></script>
 <script src="app/factories/getFactory.js"></script>
+<script src="app/factories/createBoardFactory.js"></script>
+<script src="app/factories/nameBoardFactory.js"></script>
 
 </body>
 </html>
