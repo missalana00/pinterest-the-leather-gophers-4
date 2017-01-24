@@ -19,23 +19,24 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
     $mdDialog.show(confirm).then(function(result) {
 
       $scope.status = 'Your new board is called ' + result + '.';
-      return result;
+          return result;
+
     }, function() {
       $scope.status = 'You cancelled your board.';
       //takes the name the user supplied, and creates a new board with it
     }).then((result)=>{
-      createBoardFactory.writeBoard(result)
-      .then((val)=>{
-        console.log("val from first function", val)
-        nameBoardFactory.addName(val)
-    })//end of then
-    // .then((val)=> {
-    //       idOfBoard =  val.data.name
-    //       console.log("idOfBoard", idOfBoard)
-    //       return idOfBoard;
-    //     })
+      if(results !== undefined) {
+        createBoardFactory.writeBoard(result)
+        .then((val)=>{
+          console.log("val from first function", val)
+          nameBoardFactory.addName(val)
+        })
+       }
+       else {
 
-    })
+       }//end of if statement
+    }) // end of then
+    .catch(console.log)
   }; //end of showPrompt Function
 
 
