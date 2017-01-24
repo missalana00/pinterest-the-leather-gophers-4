@@ -39,12 +39,12 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
   $scope.showPrompt = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.prompt()
-      .templateUrl:
+      // .templateUrl:
       .title('What is the title of your new Board?')
-      .textContent('Bowser is a common name.')
+      .textContent('Name it something memorable')
       .placeholder('New Board')
       .ariaLabel('Board Name')
-      .initialValue('My new board')
+      .initialValue('')
       .targetEvent(ev)
       .ok('Okay!')
       .cancel('Cancel New Board');
@@ -111,11 +111,3 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
     };
   }
 });
-
-
-
-
-
-
-
-})
