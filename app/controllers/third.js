@@ -1,4 +1,4 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog ) {
+app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory ) {
 
   $scope.status = '  ';
   $scope.customFullscreen = false;
@@ -17,11 +17,27 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
       .cancel('Cancel New Board');
 
     $mdDialog.show(confirm).then(function(result) {
+
       $scope.status = 'Your new board is called ' + result + '.';
+          return result;
+
     }, function() {
       $scope.status = 'You cancelled your board.';
-    });
-  };
+      //takes the name the user supplied, and creates a new board with it
+    }).then((result)=>{
+      if(results !== undefined) {
+        createBoardFactory.writeBoard(result)
+        .then((val)=>{
+          console.log("val from first function", val)
+          nameBoardFactory.addName(val)
+        })
+       }
+       else {
+
+       }//end of if statement
+    }) // end of then
+    .catch(console.log)
+  }; //end of showPrompt Function
 
 
   function DialogController($scope, $mdDialog) {
@@ -36,5 +52,5 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
-  }
-});
+  } // end of dialogController function
+}) //end of ThirdCtrl
