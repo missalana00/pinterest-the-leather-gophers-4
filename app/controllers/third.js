@@ -38,7 +38,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
     };
   }
 
-  $scope.createPinUrl = function(e) {
+  $scope.createPin = function(e) {
     console.log(e)
 
     var firstPrompt = $mdDialog.prompt()
@@ -70,13 +70,24 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
           title: result2
         }
         console.log(pinData)
-        
+
+        $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'app/partials/createPinPartial.html',
+          parent: angular.element(document.body),
+          scope: $scope,
+          preserveScope: true,
+          targetEvent: e,
+          clickOutsideToClose:true,
+          disableParentScroll: true,
+          fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
+        });
+
     })
-    })
+  })
 
   }
 
-  $scope.createPinTitle
 
 
 });
