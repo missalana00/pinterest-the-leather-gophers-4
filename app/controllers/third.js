@@ -65,11 +65,6 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
       .ok('Proceed to add to your board')
       .cancel('Cancel New Pin');
       $mdDialog.show(secondPrompt).then(function (result2){
-        let pinData = {
-          img: result,
-          title: result2
-        }
-        console.log(pinData)
 
         $mdDialog.show({
           controller: DialogController,
@@ -81,7 +76,23 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
           clickOutsideToClose:true,
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
-        });
+
+        }).then($scope.saveBoard = function(evnt) {
+
+          console.log(evnt.path[1].children[2].children.input_4.value)
+
+          var tagData = evnt.path[1].children[2].children.input_4.value
+
+          var pinData = {
+            img: result,
+            title: result2,
+            tag: tagData
+          }
+          console.log(pinData)
+
+
+
+        })
 
     })
   })
