@@ -1,1 +1,30 @@
 <h1 class="text-center">First Partial</h1>
+
+<!--<md-button ng-mouseover="open = true" ng-mouseleave="open = false">-->
+  <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+  <!--<md-button class="md-raised md-warn saveButton"  ng-show="open">Save</md-button>-->
+<!--</md-button>-->
+
+
+
+<p>Pin Cards</p>
+<div flex ng-cloak class="gridListdemoBasicUsage">
+  <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+
+    <md-grid-tile ng-repeat="i in images" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+      <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
+        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+      </md-button> -->
+      <img src="{{ i }}" alt="">
+      <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
+      <md-grid-tile-footer ng-show="open">
+        <h3>#5: (2r x 2c)</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+  </md-grid-list>
+</div>
+
+
+
+

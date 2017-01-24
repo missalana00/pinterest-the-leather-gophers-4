@@ -7,6 +7,28 @@
 
 
 
+
+/***********
+User Profile Page
+****************/
+
+/*limits size of userCard*/
+.userCard {
+  max-height: 10em;
+
+}
+
+/*sets background color of usercard*/
+.userCard md-card-title {
+  background-color: rgb(255,64,129);
+}
+
+/*sets color of userImage border, and pulls userImage higher up into the card*/
+.userImage {
+  margin-top: -25%;
+  border: 2px solid rgb(255, 64, 129);
+}
+
   /**************
     Pin styling
   **************/
@@ -35,35 +57,40 @@
 .gridListdemoBasicUsage md-grid-tile {
   transition: all 400ms ease-out 50ms; }
 
-.card {
-  background-image: url('http://ichef-1.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+.card img{
+  height: 100%;
+  width: 100%;
+
 }
 
 .saveButton {
   position: absolute;
   right: 10px;
   top: 10px;
-
-/***********
-User Profile Page
-****************/
-
-/*limits size of userCard*/
-.userCard {
-  max-height: 10em;
-
 }
 
-/*sets background color of usercard*/
-.userCard md-card-title {
-  background-color: rgb(255,64,129);
-}
 
-/*sets color of userImage border, and pulls userImage higher up into the card*/
-.userImage {
-  margin-top: -25%;
-  border: 2px solid rgb(255,64,129);
+/**************
+ Dialog styles
+**************/
 
-}
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }

@@ -1,0 +1,37 @@
+<md-dialog aria-label="Pin Popup">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>working</h2>
+        <span flex></span>
+      </div>
+      <md-button class="md-icon-button" ng-click="cancel()">
+
+        <md-icon md-font-set="md">close</md-icon>
+      </md-button>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Pin Name?</h2>
+        <p>Pin Text?</p>
+
+        <img style="margin: auto; max-width: 100%;" alt="Not working" src='{{ pinImg }}'>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        ???
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+        Add to Board
+      </md-button>
+      <md-button ng-click="answer('useful')">
+        Like Pin
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

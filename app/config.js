@@ -1,5 +1,9 @@
-app.config(($routeProvider, $locationProvider) => {
+app.config(($routeProvider, $locationProvider, $mdIconProvider) => {
+
+  $mdIconProvider.fontSet('md', 'material-icons');
+
   $locationProvider.hashPrefix("");
+
   $routeProvider
     .when("/", {
       controller: "FirstCtrl",

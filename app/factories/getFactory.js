@@ -1,7 +1,7 @@
 app.factory("getFactory", function($http) {
 
-  function getThingOne() {
-    return $http.get("")
+  function getData() {
+    return $http.get("app/mock/mockdb.json")
   }
 
   function getThingTwo() {
@@ -10,7 +10,7 @@ app.factory("getFactory", function($http) {
 
 
   return {
-    getThingOne,
+    getData,
     getThingTwo
   }
 });
