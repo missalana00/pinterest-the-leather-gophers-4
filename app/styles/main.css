@@ -7,7 +7,6 @@
 
 
 
-
   /**************
     Pin styling
   **************/
@@ -46,4 +45,25 @@
   position: absolute;
   right: 10px;
   top: 10px;
+
+/***********
+User Profile Page
+****************/
+
+/*limits size of userCard*/
+.userCard {
+  max-height: 10em;
+
+}
+
+/*sets background color of usercard*/
+.userCard md-card-title {
+  background-color: rgb(255,64,129);
+}
+
+/*sets color of userImage border, and pulls userImage higher up into the card*/
+.userImage {
+  margin-top: -25%;
+  border: 2px solid rgb(255,64,129);
+
 }
