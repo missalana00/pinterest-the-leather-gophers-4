@@ -22,8 +22,17 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory ) {
       return result;
     }, function() {
       $scope.status = 'You cancelled your board.';
+      //takes the name the user supplied, and creates a new board with it
     }).then((result)=>{
       createBoardFactory.writeBoard(result)
+      .then((val)=>{
+
+    })//end of then
+    // .then((val)=> {
+    //       idOfBoard =  val.data.name
+    //       console.log("idOfBoard", idOfBoard)
+    //       return idOfBoard;
+    //     })
 
     })
   }; //end of showPrompt Function
