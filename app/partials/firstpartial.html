@@ -1,1 +1,23 @@
 <h1 class="text-center">First Partial</h1>
+
+<!--<md-button ng-mouseover="open = true" ng-mouseleave="open = false">-->
+  <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+  <!--<md-button class="md-raised md-warn saveButton"  ng-show="open">Save</md-button>-->
+<!--</md-button>-->
+
+
+
+<md-button ng-repeat="i in images" ng-mouseover="open = true" ng-mouseleave="open = false">
+  <div class="md-padding"  ng-cloak>
+
+    <img ng-src="{{i}}" height="200" width="282"/>
+    <div class="dialog-demo-co" layout="row" layout-wrap layout-margin layout-align="center">
+      <md-button class="md-primary md-raised" ng-show="open" ng-click="showAdvanced($event)">
+        Custom Dialog
+      </md-button>
+    </div>
+  </div>
+</md-button>
+
+
+
