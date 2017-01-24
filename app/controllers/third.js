@@ -1,4 +1,9 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory ) {
+app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory ) {
+
+
+  //get array of boards for user
+  boardArrayFactory.boardArray()
+
 
   $scope.status = '  ';
   $scope.customFullscreen = false;
@@ -25,6 +30,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
       $scope.status = 'You cancelled your board.';
       //takes the name the user supplied, and creates a new board with it
     }).then((result)=>{
+      //if the user has given a name of the board, create a new board
       if(result !== undefined) {
         createBoardFactory.writeBoard(result)
         .then((val)=>{
@@ -32,6 +38,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
           nameBoardFactory.addName(val)
         })
        }
+       //if new board wasn't created, do nothing
        else {
 
        }//end of if statement
