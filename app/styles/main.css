@@ -29,6 +29,18 @@ User Profile Page
   border: 2px solid rgb(255, 64, 129);
 }
 
+/***user boards***/
+
+.userBoardsCollection {
+  min-width: 50%;
+}
+
+
+
+
+
+
+
   /**************
     Pin styling
   **************/
