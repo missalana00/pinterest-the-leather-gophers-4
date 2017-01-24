@@ -1,4 +1,4 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory ) {
+app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory ) {
 
   $scope.status = '  ';
   $scope.customFullscreen = false;
@@ -26,7 +26,8 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory ) {
     }).then((result)=>{
       createBoardFactory.writeBoard(result)
       .then((val)=>{
-
+        console.log("val from first function", val)
+        nameBoardFactory.addName(val)
     })//end of then
     // .then((val)=> {
     //       idOfBoard =  val.data.name

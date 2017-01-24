@@ -11,7 +11,7 @@ app.factory('createBoardFactory',  function($http){
         .post("https://pinterestleathergophers.firebaseio.com/boards.json", JSON.stringify(newBoard))
         .then((val)=>{
           console.log("val in function", val)
-          return val
+          return val.data.name
 
         })
       //}//end of if statement
