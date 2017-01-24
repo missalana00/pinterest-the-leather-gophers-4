@@ -13,7 +13,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
 
   $scope.showAdvanced = function(ev) {
     //console.log(ev.path[2].children[0].src);
-    $scope.pinImg = ev.path[2].children[0].src;
+    $scope.pinImg = ev.path[1].children[0].src;
     console.log(ev);
     $mdDialog.show({
       controller: DialogController,
