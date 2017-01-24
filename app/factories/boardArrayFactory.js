@@ -7,7 +7,7 @@ app.factory('boardArrayFactory',  function($http, getFactory){
         return getFactory.getBoards()
         .then((val)=>{
         let newArray = []
-        console.log("boardData", val)
+
 
         for(var key in val.data){
           // console.log ("key, ", key)
@@ -19,7 +19,7 @@ app.factory('boardArrayFactory',  function($http, getFactory){
           newArray.push(boardObj)
 
         }
-        console.log("newArray", newArray)
+
         return newArray
 
 

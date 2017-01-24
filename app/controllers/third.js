@@ -5,8 +5,44 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
   let boardsArray = boardArrayFactory.boardArray()
     .then((val) =>{
       $scope.boards = val
-      console.log("scope boards", $scope.boards)
+      console.log("scopeboards", $scope.boards)
+
     })
+  $scope.editBoardName = (val)=>{
+    console.log("edit this board:", val.name)
+    let whichBoard = val.name;
+    var confirm = $mdDialog.prompt()
+      // .templateUrl:
+      .title('What would you like to rename your board?')
+      .textContent('Board Titles help you organize your pins')
+      .placeholder('Rename Board')
+      .ariaLabel('Board Name')
+      .initialValue(val.title)
+      // .targetEvent(ev)
+      .ok('Okay!')
+      .cancel('Cancel Board Edit');
+
+    $mdDialog.show(confirm).then(function(result) {
+
+      $scope.status = "You've renamed your board " + result + '.';
+          return result;
+
+    }, function() {
+      $scope.status = 'You cancelled renaming board.';
+      //takes the name the user supplied, and creates a new board with it
+    }).then((result)=>{
+      //if the user has given a name of the board, create a new board
+      if(result !== undefined) {
+        createBoardFactory.renameBoard(result, whichBoard)
+
+       }
+       //if new board wasn't created, do nothing
+       else {
+
+       }//end of if statement
+    }) // end of then
+    .catch(console.log)
+  }; //end of showEdit Function
 
 
   $scope.status = '  ';
