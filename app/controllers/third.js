@@ -5,9 +5,14 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
   let boardsArray = boardArrayFactory.boardArray()
     .then((val) =>{
       $scope.boards = val
-      console.log("scopeboards", $scope.boards)
-
     })
+
+$scope.goToBoard = (value) => {
+  $location()
+}
+
+
+//function for module that allows you to edit the board name
   $scope.editBoardName = (val)=>{
     console.log("edit this board:", val.name)
     let whichBoard = val.name;
@@ -29,25 +34,25 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
 
     }, function() {
       $scope.status = 'You cancelled renaming board.';
-      //takes the name the user supplied, and creates a new board with it
+      //takes the name the user supplied, and renames the board
     }).then((result)=>{
-      //if the user has given a name of the board, create a new board
+      //if the user has renamed the board, store new name of board
       if(result !== undefined) {
         createBoardFactory.renameBoard(result, whichBoard)
 
-       }
-       //if new board wasn't created, do nothing
+       }//if board wasn't renamed, do nothing
        else {
 
        }//end of if statement
     }) // end of then
     .catch(console.log)
-  }; //end of showEdit Function
+  }; //end of editBoardName Function
 
 
   $scope.status = '  ';
   $scope.customFullscreen = false;
 
+//function that allows you to create a new board (thru a module)
   $scope.showPrompt = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.prompt()
