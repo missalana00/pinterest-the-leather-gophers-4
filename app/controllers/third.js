@@ -37,4 +37,38 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
       $mdDialog.hide(answer);
     };
   }
+
+  $scope.createPinUrl = function(e) {
+    console.log(e)
+
+    var firstPrompt = $mdDialog.prompt()
+      // .templateUrl:
+      .title('Create a new pin')
+      .textContent('Enter a URL for an image to create your pin')
+      .placeholder('New Pin URL')
+      .ariaLabel('Pin')
+      .initialValue('')
+      .targetEvent(e)
+      .ok('Proceed to Enter Title')
+      .cancel('Cancel New Pin');
+      console.log(firstPrompt)
+    $mdDialog.show(firstPrompt).then(function(result) {
+      console.log(result)
+      var secondPrompt = $mdDialog.prompt()
+      .title('Enter Title')
+      .textContent('Enter a title for your pin')
+      .placeholder('Title')
+      .ariaLabel('Title')
+      .initialValue('')
+      .targetEvent(e)
+      .ok('Proceed to add to your board')
+      .cancel('Cancel New Pin');
+      $mdDialog.show(secondPrompt)
+    }).then(function)
+
+  }
+
+  $scope.createPinTitle
+
+
 });
