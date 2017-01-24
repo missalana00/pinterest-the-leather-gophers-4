@@ -52,6 +52,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
       .ok('Proceed to Enter Title')
       .cancel('Cancel New Pin');
       console.log(firstPrompt)
+
     $mdDialog.show(firstPrompt).then(function(result) {
       console.log(result)
       var secondPrompt = $mdDialog.prompt()
@@ -63,8 +64,15 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
       .targetEvent(e)
       .ok('Proceed to add to your board')
       .cancel('Cancel New Pin');
-      $mdDialog.show(secondPrompt)
-    }).then(function)
+      $mdDialog.show(secondPrompt).then(function (result2){
+        let pinData = {
+          img: result,
+          title: result2
+        }
+        console.log(pinData)
+        
+    })
+    })
 
   }
 
