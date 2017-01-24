@@ -2,7 +2,11 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
 
 
   //get array of boards for user
-  boardArrayFactory.boardArray()
+  let boardsArray = boardArrayFactory.boardArray()
+    .then((val) =>{
+      $scope.boards = val
+      console.log("scope boards", $scope.boards)
+    })
 
 
   $scope.status = '  ';

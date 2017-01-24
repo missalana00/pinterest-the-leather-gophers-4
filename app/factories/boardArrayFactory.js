@@ -4,7 +4,7 @@ app.factory('boardArrayFactory',  function($http, getFactory){
 
   return {
     boardArray : () => {
-        getFactory.getBoards()
+        return getFactory.getBoards()
         .then((val)=>{
         let newArray = []
         console.log("boardData", val)
