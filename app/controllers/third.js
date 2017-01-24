@@ -25,7 +25,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
       $scope.status = 'You cancelled your board.';
       //takes the name the user supplied, and creates a new board with it
     }).then((result)=>{
-      if(results !== undefined) {
+      if(result !== undefined) {
         createBoardFactory.writeBoard(result)
         .then((val)=>{
           console.log("val from first function", val)
