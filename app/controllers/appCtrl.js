@@ -3,5 +3,6 @@ app.controller("AppCtrl", function($scope) {
 
   function AppCtrl($scope) {
     $scope.currentNavItem = 'page1';
+    $scope.open = false;
   }
 });
