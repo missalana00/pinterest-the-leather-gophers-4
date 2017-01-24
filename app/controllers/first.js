@@ -1,8 +1,8 @@
 app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   console.log("FirstCtrl");
 
-  getFactory.getThingOne().then(function (data) {
-    //console.log(data.data.img);
+  getFactory.getData().then(function (data) {
+    console.log(data.data.img);
     $scope.images = data.data.img;
 
   });
