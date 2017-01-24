@@ -36,10 +36,65 @@
               </md-nav-bar>  <!-- end of nav bar -->
 
             <div class="ext-content">
-            External content for `<span>{{currentNavItem}}</span>`
-              <div>
-                <span></span>
+
+
+
+
+             <div class="userBoards">
+              <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
+                <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
+                Create New Board
+                </md-button>
               </div>
+              <md-content class="md-padding" layout-xs="column" layout="row">
+              <!-- <div layout="row">
+                <span></span> -->
+                <div flex-xs flex-gt-xs="50" layout="column">
+                  <md-card>
+                    <md-card-title>
+                    <md-card-actions layout="column" layout-align="start">
+                      <md-button>
+                        <span class="md-headline">Board Name 2</span>
+                      </md-button>
+                      <md-button>
+                        Edit Board
+                      </md-button>
+                    </md-card-actions>
+
+                    </md-card-title>
+                    <img ng-src="http://i.imgur.com/jUoZ97r.jpg" class="md-card-image" alt="Washed Out">
+                    <md-card-content>
+                      <p>
+                        put tags here.
+                      </p>
+                    </md-card-content>
+
+                  </md-card>
+                </div> <!-- end of first card -->
+
+                <div flex-xs flex-gt-xs="50" layout="column">
+                  <md-card>
+                    <md-card-title>
+                    <md-card-actions layout="column" layout-align="start">
+                      <md-button>
+                        <span class="md-headline">Board Name 2</span>
+                      </md-button>
+                      <md-button>
+                        Edit Board
+                      </md-button>
+                    </md-card-actions>
+
+                    </md-card-title>
+                    <img ng-src="http://i.imgur.com/jUoZ97r.jpg" class="md-card-image" alt="Washed Out">
+                    <md-card-content>
+                      <p>
+                        put tags here.
+                      </p>
+                    </md-card-content>
+
+                  </md-card>
+                </div> <!-- end of card container -->
+              </div> <!-- end of boards div -->
             </div> <!-- end of div for page content -->
           </md-content>
         </div>
