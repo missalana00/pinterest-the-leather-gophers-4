@@ -8,7 +8,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
       console.log(data.data);
       $scope.pins = data.data;
     })
-    .then(function(pins) {  //Add random col/row spans to each pin to randomize layout
+    .then(function() {  //Add random col/row spans to each pin to randomize layout
       Object.keys($scope.pins).forEach(function(id) {
         $scope.pins[id].rowspan = random(),
         $scope.pins[id].colspan = random(),

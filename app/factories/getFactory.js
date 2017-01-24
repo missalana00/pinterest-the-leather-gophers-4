@@ -13,4 +13,5 @@ app.factory("getFactory", function($http) {
     getData,
     getThingTwo
   }
+
 });
