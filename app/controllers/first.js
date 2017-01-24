@@ -1,15 +1,37 @@
 app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   console.log("FirstCtrl");
 
-  getFactory.getData().then(function (data) {
-    console.log(data.data.img);
-    $scope.images = data.data.img;
 
-  });
+  // Get DATA from firebase
+  getFactory.getData()
+    .then(function (data) {
+      console.log(data.data);
+      $scope.pins = data.data;
+    })
+    .then(function(pins) {  //Add random col/row spans to each pin to randomize layout
+      Object.keys($scope.pins).forEach(function(id) {
+        $scope.pins[id].rowspan = random(),
+        $scope.pins[id].colspan = random(),
+        $scope.pins[id].colspansm = random(),
+        $scope.pins[id].colspanxs = random()
+      });
+    });
 
+  // Function to return random number for col/row spans
+  var random = function() {
+    var r = Math.random();
+    if (r < 0.3) {
+      return 1;
+    } else if (r < 0.7) {
+      return 2;
+    } else {
+      return 3;
+    }
+  };
+
+  //mdDialog opens when save button is click on any pin
   $scope.status = '  ';
   $scope.customFullscreen = false;
-
 
   $scope.showAdvanced = function(ev) {
     //console.log(ev.path[2].children[0].src);
@@ -24,11 +46,8 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
       targetEvent: ev,
       clickOutsideToClose:true,
       disableParentScroll: true,
-      fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
+      fullscreen: $scope.customFullscreen,
     });
-             //.then(function(answer) {
-             //  $scope.status = 'You said the information was "' + answer + '".';
-             //});
   };
 
   function DialogController($scope, $mdDialog) {
