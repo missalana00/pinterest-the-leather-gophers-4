@@ -1,5 +1,7 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory) {
+app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory) {
 
+
+  $scope.boardArray = [];
 
   //get array of boards for user
   let boardsArray = boardArrayFactory.boardArray()
@@ -7,14 +9,37 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
       $scope.boards = val
     })
 
-$scope.goToBoard = (value) => {
+  $scope.goToBoard = (value) => {
   $location()
-}
+  };
+
+  $scope.querySearch = function (query) {
+    return query ? $scope.boardArray.filter($scope.createFilterFor(query)) : $scope.boardArray;
+    //return $scope.boardArray
+  };
+
+  $scope.createFilterFor = function(query) {
+    var lowerCaseQuery = angular.lowercase(query);
+
+    return function filterFN() {
+      return ($scope.boardArray.indexOf(lowerCaseQuery) === 0)
+    };
+  }
+
+  $scope.fetchBoards = function () {
+    getFactory.getBoards().then((data) => {
+      $scope.boardNames = data.data;
+      Object.keys($scope.boardNames).forEach(function(id) {
+        $scope.boardArray.push($scope.boardNames[id].title)
+      });
+    console.log("Hello James", $scope.boardArray);
+    });
+  };
 
 
 //function for module that allows you to edit the board name
   $scope.editBoardName = (val)=>{
-    console.log("edit this board:", val.name)
+    console.log("edit this board:", val.name);
     let whichBoard = val.name;
     var confirm = $mdDialog.prompt()
       // .templateUrl:
