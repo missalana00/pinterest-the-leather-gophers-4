@@ -1,28 +1,25 @@
-<h1>I'm the board view</h1>
-
-<h1 class="text-center">4th Partial</h1>
-
-<!--<md-button ng-mouseover="open = true" ng-mouseleave="open = false">-->
-  <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
-  <!--<md-button class="md-raised md-warn saveButton"  ng-show="open">Save</md-button>-->
-<!--</md-button>-->
 
 
+<div layout="column" ng-cloak>
+  <md-toolbar class="boardLabel">
+    <h1>{{boardName}}</h1>
+  </md-toolbar>
 
-<!--Pin Cards-->
-<div flex ng-cloak class="gridListdemoBasicUsage">
-  <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+  <md-content flex layout-padding class="userBoard">
+    <div flex ng-cloak>
 
-    <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="{{ pin.colspan }}" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
-      <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
-        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-      </md-button> -->
-      <img src="{{ pin.img }}" alt="">
-      <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
-      <md-grid-tile-footer ng-show="open">
-        <h3>{{ pin.title }}</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
+      <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
 
-  </md-grid-list>
+        <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="{{ pin.colspan }}" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
+
+          <img src="{{ pin.img }}" alt="">
+          <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
+          <md-grid-tile-footer ng-show="open">
+            <h3>{{ pin.title }}</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+      </md-grid-list>
+    </div>
+  </md-content>
 </div>
