@@ -1,3 +1,3 @@
-app.controller('FourthCtrl',  function(){
+app.controller('FourthCtrl',  function () {
 
 })
