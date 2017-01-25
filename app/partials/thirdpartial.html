@@ -52,7 +52,7 @@
               <md-content class="md-padding" layout-xs="column" layout="row">
 
                 <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="board in boards" class="userBoardsCollection">
-                  <md-card data-name=board.name>
+                  <md-card data-name="{{board.name}}">
                     <md-card-title>
                     <md-card-actions layout="column" layout-align="start">
                       <md-button>
@@ -64,7 +64,7 @@
                     </md-card-actions>
 
                     </md-card-title>
-                    <img ng-src="http://i.imgur.com/jUoZ97r.jpg" class="md-card-image" alt="Washed Out">
+                    <img ng-src="http://i.imgur.com/jUoZ97r.jpg" class="md-card-image" alt="humours Star Wars Cartoon">
                     <md-card-content>
                       <p>
                         put tags here.

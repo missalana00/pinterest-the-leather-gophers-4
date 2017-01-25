@@ -24,7 +24,8 @@ app.factory('createBoardFactory',  function($http){
           "title" : newName
         } // end of newName object
         //rename the board on the userpage
-        $(`[data-name=${boardUID}] .md-headline`).text("silly")
+        console.log("I'm trying to change the name")
+        $(`[data-name=${boardUID}] .md-headline`).text(newName)
         //write the new name to firebase
         return $http
         .patch(`https://pinterestleathergophers.firebaseio.com/boards/${boardUID}.json`, JSON.stringify(rename))
