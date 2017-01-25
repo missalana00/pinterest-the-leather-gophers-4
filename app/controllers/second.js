@@ -11,15 +11,16 @@ app.controller("SecondCtrl", function($scope, authFactory) {
     // console.log(e.path[2].children[1].children.password.value)
   }
 
-  $scope.registerButton = function (e) {
+  $scope.registerButton = function (e, p) {
 
-    var email = e.path[2].children[0].children.email.value
-    var password = e.path[2].children[1].children.password.value
+    var email = e
+    var password = p
+    console.log(e)
+    console.log(p)
+
 
     authFactory.register(email, password)
 
-    console.log(e.path[2].children[0].children.email.value)
-    console.log(e.path[2].children[1].children.password.value)
 
   }
 

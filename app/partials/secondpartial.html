@@ -8,7 +8,7 @@
 
         <md-input-container class="md-block" flex-gt-sm>
         <label>Email</label>
-        <input name="email" ng-model="user.email"
+        <input name="email" ng-model="userEmail"
                required minlength="7" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
         <div class="hint" ng-show="showHints">How can we reach you?</div>
@@ -22,7 +22,7 @@
 
       <md-input-container class="md-block" flex-gt-sm>
         <label>Password</label>
-        <input name="password" type="password" ng-model="user.password" required minlength="6" maxlength="100"/>
+        <input name="password" type="password" ng-model="userPassword" required minlength="6" maxlength="100"/>
 
         <div class="hint" ng-show="showHints">Please enter a password with a minimum of 6 characters</div>
 
@@ -36,7 +36,7 @@
 
         <div>
           <md-button type="submit" ng-click="loginButton($event)">Login</md-button>
-          <md-button type="submit" ng-click="registerButton($event)">Register</md-button>
+          <md-button type="submit" ng-click="registerButton(userEmail, userPassword)">Register</md-button>
         </div>
 
     </div> <!--end of row -->
