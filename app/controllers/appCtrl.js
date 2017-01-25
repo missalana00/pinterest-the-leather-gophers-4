@@ -5,4 +5,5 @@ app.controller("AppCtrl", function($scope) {
     $scope.currentNavItem = 'page1';
     $scope.open = false;
   }
+  
 });

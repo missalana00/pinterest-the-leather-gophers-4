@@ -64,12 +64,3 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
 
   }
 });
-
-
-
-
-
-
-
-
-

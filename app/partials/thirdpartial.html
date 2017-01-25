@@ -28,7 +28,7 @@
         <div ng-controller="AppCtrl" ng-cloak>
             <md-content class="md-padding">
               <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-              <md-nav-item md-nav-click="goto('page1')" name="Create Pin">Create Pin</md-nav-item>
+              <md-nav-item md-nav-click="goto('page1')" name="Create Pin" ng-click="createPin($event)">Create Pin</md-nav-item>
               <md-nav-item md-nav-click="goto('page1')" name="Pins">Pins</md-nav-item>
               <md-nav-item md-nav-click="goto('page2')" name="Boards">Boards</md-nav-item>
               <!-- <md-nav-item md-nav-click="goto('page3')" name="Likes">Likes</md-nav-item> -->
@@ -48,6 +48,9 @@
                 <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
                 Create New Board
                 </md-button>
+                <!-- <md-button class="md-primary md-raised">
+                  Create Pin
+                </md-button> -->
               </div>
               <md-content class="md-padding" layout-xs="column" layout="row">
 

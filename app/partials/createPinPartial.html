@@ -1,0 +1,29 @@
+<md-dialog aria-label="Pin Popup">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add to your board and add tags</h2>
+        <span flex></span>
+      </div>
+      <md-button class="md-icon-button" ng-click="cancel()">
+
+        <md-icon md-font-set="md">close</md-icon>
+      </md-button>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Board</h2>
+        <p>Tags</p>
+
+        <md-input-container>
+          <label>tags</label>
+          <input ng-model="user.title">
+        </md-input-container>
+
+        <md-button ng-click="saveBoard($event)">
+          Save
+        </md-button>
+
+  </form>
+</md-dialog>
