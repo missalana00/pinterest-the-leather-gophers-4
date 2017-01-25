@@ -1,5 +1,9 @@
+
 app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory, $location, getFactory) {
 
+
+
+  $scope.boardArray = [];
 
   //get array of boards for user
   let boardsArray = boardArrayFactory.boardArray()
@@ -53,10 +57,38 @@ $scope.goToBoards = ()=>{
   $(".userPins").addClass("ng-hide")
 }
 
+  $scope.goToBoard = (value) => {
+  $location()
+  };
+
+  $scope.querySearch = function (query) {
+    return query ? $scope.boardArray.filter($scope.createFilterFor(query)) : $scope.boardArray;
+    //return $scope.boardArray
+  };
+
+  $scope.createFilterFor = function(query) {
+    var lowerCaseQuery = angular.lowercase(query);
+
+    return function filterFN() {
+      return ($scope.boardArray.indexOf(lowerCaseQuery) === 0)
+    };
+  }
+
+  $scope.fetchBoards = function () {
+    getFactory.getBoards().then((data) => {
+      $scope.boardNames = data.data;
+      Object.keys($scope.boardNames).forEach(function(id) {
+        $scope.boardArray.push($scope.boardNames[id].title)
+      });
+    console.log("Hello James", $scope.boardArray);
+    });
+  };
+
+
 
 //function for module that allows you to edit the board name
   $scope.editBoardName = (val)=>{
-    console.log("edit this board:", val.name)
+    console.log("edit this board:", val.name);
     let whichBoard = val.name;
     var confirm = $mdDialog.prompt()
       // .templateUrl:
@@ -146,11 +178,12 @@ $scope.goToBoards = ()=>{
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
+
   }
 
   $scope.createPin = function(e) {
-    console.log(e)
-
+    console.log(e);
+    $scope.fetchBoards();
     var firstPrompt = $mdDialog.prompt()
       // .templateUrl:
       .title('Create a new pin')
@@ -187,8 +220,8 @@ $scope.goToBoards = ()=>{
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
 
-        }).then($scope.saveBoard = function(evnt) {
-
+        }).then(function(evnt) {
+          console.log(evnt);
           console.log(evnt.path[1].children[2].children.input_4.value)
 
           var tagData = evnt.path[1].children[2].children.input_4.value
