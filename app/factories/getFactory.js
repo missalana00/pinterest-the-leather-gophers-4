@@ -1,16 +1,17 @@
 app.factory("getFactory", function($http) {
 
   function getData() {
-    return $http.get("app/mock/mockdb.json")
+    return $http.get("https://pinterestleathergophers.firebaseio.com/pins.json")
   }
 
-  function getThingTwo() {
-    return $http.get("")
+  function getBoards() {
+    return $http.get("https://pinterestleathergophers.firebaseio.com/boards.json")
   }
 
 
   return {
     getData,
-    getThingTwo
+    getBoards
   }
+
 });

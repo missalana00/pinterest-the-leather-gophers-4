@@ -1,20 +1,18 @@
 <md-dialog aria-label="Pin Popup">
   <form ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>working</h2>
-        <span flex></span>
-      </div>
-      <md-button class="md-icon-button" ng-click="cancel()">
+    <md-toolbar class="md-accent" layout="row" layout-align="space-between center">
 
+      <md-button flex="10" class="md-icon-button" ng-click="cancel()">
         <md-icon md-font-set="md">close</md-icon>
       </md-button>
+      <div flex class="md-toolbar-tools">
+        <h2>{{ pinTitle }}</h2>
+      </div>
+
     </md-toolbar>
 
     <md-dialog-content>
       <div class="md-dialog-content">
-        <h2>Pin Name?</h2>
-        <p>Pin Text?</p>
 
         <img style="margin: auto; max-width: 100%;" alt="Not working" src='{{ pinImg }}'>
       </div>
@@ -25,11 +23,11 @@
         ???
       </md-button>
       <span flex></span>
-      <md-button ng-click="answer('not useful')">
-        Add to Board
+      <md-button ng-click="">
+        <md-icon md-font-set="md">add</md-icon>
       </md-button>
-      <md-button ng-click="answer('useful')">
-        Like Pin
+      <md-button class="md-accent" ng-click="">
+        <md-icon md-font-set="md">favorite</md-icon>
       </md-button>
     </md-dialog-actions>
   </form>
