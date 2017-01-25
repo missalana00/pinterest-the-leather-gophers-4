@@ -23,15 +23,11 @@ app.factory('createBoardFactory',  function($http){
         let rename = {
           "title" : newName
         } // end of newName object
-
+        //rename the board on the userpage
+        $(`[data-name=${boardUID}] .md-headline`).text("silly")
+        //write the new name to firebase
         return $http
         .patch(`https://pinterestleathergophers.firebaseio.com/boards/${boardUID}.json`, JSON.stringify(rename))
-        // .then((val)=>{
-        //   console.log("val in function", val)
-        //   return val.data.name
-
-        // })
-      //}//end of if statement
 
     }// end of writeBoard()
   }; // end of factory object

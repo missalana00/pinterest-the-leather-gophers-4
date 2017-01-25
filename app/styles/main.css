@@ -106,3 +106,13 @@ User Profile Page
 
 .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
   margin-bottom: 0; }
+
+/**************
+ Board Stylings on User page
+**************/
+
+
+  .boardTitle {
+    font-weight: bold;
+
+  }

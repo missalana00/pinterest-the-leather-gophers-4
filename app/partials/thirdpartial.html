@@ -52,11 +52,11 @@
               <md-content class="md-padding" layout-xs="column" layout="row">
 
                 <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="board in boards" class="userBoardsCollection">
-                  <md-card>
+                  <md-card data-name=board.name>
                     <md-card-title>
                     <md-card-actions layout="column" layout-align="start">
                       <md-button>
-                        <span class="md-headline" ng-click=goToBoard(board)>{{board.title}}</span>
+                        <span class="md-headline boardTitle" ng-click=goToBoard(board)>{{board.title}}</span>
                       </md-button>
                       <md-button ng-click=editBoardName(board)>
                         Edit Board
