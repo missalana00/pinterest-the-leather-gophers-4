@@ -129,11 +129,12 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
+
   }
 
   $scope.createPin = function(e) {
-    console.log(e)
-
+    console.log(e);
+    $scope.fetchBoards();
     var firstPrompt = $mdDialog.prompt()
       // .templateUrl:
       .title('Create a new pin')
@@ -170,8 +171,8 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
 
-        }).then($scope.saveBoard = function(evnt) {
-
+        }).then(function(evnt) {
+          console.log(evnt);
           console.log(evnt.path[1].children[2].children.input_4.value)
 
           var tagData = evnt.path[1].children[2].children.input_4.value
