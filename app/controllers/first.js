@@ -1,7 +1,6 @@
 app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   console.log("FirstCtrl");
 
-
   // Get DATA from firebase
   getFactory.getData()
     .then(function (data) {
@@ -16,6 +15,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
         $scope.pins[id].colspanxs = random()
       });
     });
+
 
   // Function to return random number for col/row spans
   var random = function() {
