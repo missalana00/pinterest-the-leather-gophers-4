@@ -1,4 +1,4 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog ) {
+app.controller("ThirdCtrl", function($scope, $mdDialog, createPinsFactory) {
 
   $scope.status = '  ';
   $scope.customFullscreen = false;
@@ -82,7 +82,7 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
           console.log(evnt.path[1].children[2].children.input_4.value)
 
           var tagData = evnt.path[1].children[2].children.input_4.value
-
+          //stores the image url, title, tags into an object
           var pinData = {
             img: result,
             title: result2,
@@ -90,14 +90,14 @@ app.controller("ThirdCtrl", function($scope,$mdDialog ) {
           }
           console.log(pinData)
 
-
+          createPinsFactory.postPin(pinData).then(console.log)
 
         })
 
     })
-  })
+  }) //first .then
 
-  }
+} //$scope.createPin
 
 
 
