@@ -17,6 +17,10 @@ app.config(($routeProvider, $locationProvider, $mdIconProvider) => {
       controller: "ThirdCtrl",
       templateUrl: "app/partials/thirdpartial.html",
     })
+    .when("/boards/:boardName", {
+      controller: "FourthCtrl",
+      templateUrl: "app/partials/fourthpartial.html"
+    })
     .otherwise({
       redirectTo: "/"
     });

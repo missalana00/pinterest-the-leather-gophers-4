@@ -1,4 +1,4 @@
-app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory) {
+app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory, $location) {
 
 
   //get array of boards for user
@@ -8,7 +8,8 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
     })
 
 $scope.goToBoard = (value) => {
-  $location()
+  let boardUID = value.name
+  $location.url(`/boards/${boardUID}`)
 }
 
 
