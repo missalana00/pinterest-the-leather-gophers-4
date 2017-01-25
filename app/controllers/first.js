@@ -1,7 +1,6 @@
 app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   console.log("FirstCtrl");
 
-
   // Get DATA from firebase
   getFactory.getData()
     .then(function (data) {
@@ -16,6 +15,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
         $scope.pins[id].colspanxs = random()
       });
     });
+
 
   // Function to return random number for col/row spans
   var random = function() {
@@ -36,6 +36,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   $scope.showAdvanced = function(ev) {
     //console.log(ev.path[2].children[0].src);
     $scope.pinImg = ev.path[1].children[0].src;
+    $scope.pinTitle = ev.path[1].children[2].innerText;
     console.log(ev);
     $mdDialog.show({
       controller: DialogController,
@@ -57,14 +58,10 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
       $mdDialog.hide();
     };
 
-
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
   }
 });
 
