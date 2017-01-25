@@ -29,6 +29,18 @@ User Profile Page
   border: 2px solid rgb(255, 64, 129);
 }
 
+/***user boards***/
+
+.userBoardsCollection {
+  min-width: 50%;
+}
+
+
+
+
+
+
+
   /**************
     Pin styling
   **************/
@@ -94,3 +106,13 @@ User Profile Page
 
 .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
   margin-bottom: 0; }
+
+/**************
+ Board Stylings on User page
+**************/
+
+
+  .boardTitle {
+    font-weight: bold;
+
+  }
