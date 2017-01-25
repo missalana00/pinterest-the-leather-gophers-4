@@ -145,7 +145,7 @@ $scope.goToBoard = (value) => {
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
 
-        }).then($scope.saveBoard = function(evnt) {
+        }).then(function(evnt) {
 
           console.log(evnt.path[1].children[2].children.input_4.value)
 
