@@ -257,10 +257,9 @@ $scope.goToBoards = ()=>{
 
 
   $scope.showAdvanced = function(ev) {
-    //console.log(ev.path[2].children[0].src);
-    $scope.pinImg = ev.path[1].children[0].src;
-    $scope.pinTitle = ev.path[1].children[2].innerText;
     console.log(ev);
+    $scope.pinImg = ev.path[0].currentSrc;
+    $scope.pinTitle = ev.path[1].children[1].innerText;
     $mdDialog.show({
       controller: DialogController,
       templateUrl: 'app/partials/profilePinPartial.html',
@@ -268,7 +267,7 @@ $scope.goToBoards = ()=>{
       scope: $scope,
       preserveScope: true,
       targetEvent: ev,
-      clickOutsideToClose:true,
+      clickOutsideToClose: true,
       disableParentScroll: true,
       fullscreen: $scope.customFullscreen,
     });
