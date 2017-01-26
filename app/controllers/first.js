@@ -1,5 +1,8 @@
-app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory) {
+app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory, $q, $timeout) {
+
   console.log("FirstCtrl");
+
+  $scope.pinTags = "";
 
   // Get DATA from firebase
   getFactory.getData()
@@ -10,6 +13,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory
     .then(function() {  //Add random col/row spans to each pin to randomize layout
       Object.keys($scope.result).forEach(function(id) {
         $scope.result[id].rowspan = random()
+        $scope.pinTags += $scope.result[id].tag + ", ";
       });
     })
     .then(() => {
@@ -21,6 +25,16 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory
       console.log($scope.pins.length);
     shuffleArray(($scope.pins))
     })
+    .then(function ()  {
+      $scope.pinSearch = $scope.pinTags.split(/, +/g)
+       .map( function(pin) {
+         return {
+           value: pin.toLowerCase(),
+           display: pin
+         };
+       });
+    })
+
 
 
   //http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -86,4 +100,27 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory
     };
 
   }
+/********* Start autocomplete **********/
+   $scope.querySearch = function(query) {
+     $scope.searchInput = query;
+     console.log($scope.searchInput)
+  return query ? $scope.pinSearch.filter(createFilterFor(query)) : $scope.pinSearch;
+}
+
+
+  /**
+   * Create filter function for a query string
+   */
+  function createFilterFor(query) {
+    var lowercaseQuery = angular.lowercase(query);
+
+    return function filterFn(pin) {
+      return (pin.value.indexOf(lowercaseQuery) === 0);
+    };
+
+  }
+  /********* End autocomplete **********/
+
 });
+
+
