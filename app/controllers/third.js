@@ -189,7 +189,7 @@ $scope.goToBoards = ()=>{
       console.log(pinData)
 
       createPinsFactory.postPin(pinData).then(console.log)
-
+      $mdDialog.cancel();
     }
 
      function createFilterFor(query) {
