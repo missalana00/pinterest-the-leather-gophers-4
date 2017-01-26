@@ -1,8 +1,6 @@
 app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory) {
 
 
-  $scope.boardArray = [];
-
   //get array of boards for user
   let boardsArray = boardArrayFactory.boardArray()
     .then((val) =>{
@@ -13,27 +11,24 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
   $location()
   };
 
-  $scope.querySearch = function (query) {
-    return query ? $scope.boardArray.filter($scope.createFilterFor(query)) : $scope.boardArray;
-    //return $scope.boardArray
-  };
-
-  $scope.createFilterFor = function(query) {
-    var lowerCaseQuery = angular.lowercase(query);
-
-    return function filterFN() {
-      return ($scope.boardArray.indexOf(lowerCaseQuery) === 0)
-    };
-  }
-
+  $scope.boardArray = "";
   $scope.fetchBoards = function () {
     getFactory.getBoards().then((data) => {
       $scope.boardNames = data.data;
+
       Object.keys($scope.boardNames).forEach(function(id) {
-        $scope.boardArray.push($scope.boardNames[id].title)
+        $scope.boardArray += $scope.boardNames[id].title + ", ";
       });
-    console.log("Hello James", $scope.boardArray);
-    });
+
+    }).then(function()  {
+        $scope.oneBoard = $scope.boardArray.split(/, +/g)
+        .map( function(board) {
+          return {
+            value: board.toLowerCase(),
+            display: board
+          };
+        });
+      })
   };
 
 
