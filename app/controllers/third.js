@@ -1,5 +1,5 @@
 
-app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory, $location, getFactory) {
+app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory, $location, getFactory, $q) {
 
 
 
@@ -17,26 +17,6 @@ app.controller("ThirdCtrl", function($scope,$mdDialog, createBoardFactory, nameB
       console.log(data.data);
       $scope.pins = data.data;
     })
-    // .then(function() {  //Add random col/row spans to each pin to randomize layout
-    //   Object.keys($scope.pins).forEach(function(id) {
-    //     $scope.pins[id].rowspan = random(),
-    //     $scope.pins[id].colspan = random(),
-    //     $scope.pins[id].colspansm = random(),
-    //     $scope.pins[id].colspanxs = random()
-    //   });
-    // });
-
-// // Function to return random number for col/row spans
-//   var random = function() {
-//     var r = Math.random();
-//     if (r < 0.3) {
-//       return 1;
-//     } else if (r < 0.7) {
-//       return 2;
-//     } else {
-//       return 3;
-//     }
-//   };
 
 //goes to selected user board
 $scope.goToBoard = (value) => {
@@ -57,16 +37,19 @@ $scope.goToBoards = ()=>{
   $(".userPins").addClass("ng-hide")
 }
 
-  $scope.goToBoard = (value) => {
-  $location()
-  };
-
   $scope.querySearch = function (query) {
-    return query ? $scope.boardArray.filter($scope.createFilterFor(query)) : $scope.boardArray;
+    console.log("querySearch")
+    var d =$q.defer();
+    var results =  query ? $scope.boardArray.filter($scope.createFilterFor(query) ) : $scope.boardArray;
+    d.resolve(["fake array", "really a fake array"])
+    console.log("results", results)
+    return d.promise;
     //return $scope.boardArray
   };
 
   $scope.createFilterFor = function(query) {
+    console.log("createFilterFor")
+    console.log("my query", query)
     var lowerCaseQuery = angular.lowercase(query);
 
     return function filterFN() {
