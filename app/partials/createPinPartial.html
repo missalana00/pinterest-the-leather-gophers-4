@@ -21,12 +21,12 @@
             md-selected-item="selectedItem"
             md-search-text="searchText"
             md-items="item in querySearch(searchText)"
-            md-item-text="item"
+            md-item-text="item.display"
             md-min-length="0"
             placeholder="Pick a board!"
             md-autofocus>
             <md-item-template>
-              <span md-highlight-text="searchText" md-highlight-flags="^i"> {{ item }} </span>
+              <span md-highlight-text="searchText"> {{ item.display }} </span>
             </md-item-template>
             <md-not-found>
               No Boards matching "{{ searchText }}"
