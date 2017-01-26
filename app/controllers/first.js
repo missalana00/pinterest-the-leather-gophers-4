@@ -1,4 +1,5 @@
-app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, $q, $timeout) {
+app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory, $q, $timeout) {
+
   console.log("FirstCtrl");
 
   $scope.pinTags = "";
@@ -66,6 +67,10 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, $q, $timeout
   $scope.customFullscreen = false;
 
   $scope.showAdvanced = function(ev) {
+    if(firebase.auth().currentUser === null) {
+      toastFactory.toastMaker("you must be logged in to save a pin", "top")
+      return
+    }
     //console.log(ev.path[2].children[0].src);
     $scope.pinImg = ev.path[1].children[0].src;
     $scope.pinTitle = ev.path[1].children[2].innerText;
