@@ -10,13 +10,12 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
     })
 
 
-  $scope.goToBoard = (value) => {
-  $location()
-  };
+
 
   $scope.boardArray = "";
   $scope.fetchBoards = function () {
     getFactory.getBoards().then((data) => {
+
       $scope.boardNames = data.data;
 
       Object.keys($scope.boardNames).forEach(function(id) {
@@ -24,6 +23,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
       });
 
     }).then(function()  {
+
         $scope.oneBoard = $scope.boardArray.split(/, +/g)
         .map( function(board) {
           return {
@@ -176,17 +176,23 @@ $scope.goToBoards = ()=>{
     };
 
     $scope.savePin = function(evnt) {
-      console.log(evnt);
-      console.log(evnt.path[2].children[0].children[3].children[1].value)
+      //console.log(evnt);
+      //console.log(evnt.path[2].children[0].children[2].children[0].children[0].value)
+      var boardId = evnt.path[2].children[0].children[2].children[0].children[0].value;
+
+      // GOING TO NEED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      $scope.boardKey = _.findKey($scope.boardNames, ["title", boardId]);
+      console.log($scope.boardKey);
 
       var tagData = evnt.path[2].children[0].children[3].children[1].value;
       //stores the image url, title, tags into an object
       var pinData = {
         img: $scope.result1,
         title: $scope.result2,
-        tag: tagData
+        tag: tagData,
+        boardID: $scope.boardKey
       }
-      console.log(pinData)
+      //console.log(pinData)
 
       createPinsFactory.postPin(pinData).then(console.log)
       $mdDialog.cancel();
