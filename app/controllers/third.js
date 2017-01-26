@@ -125,7 +125,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
       $mdDialog.hide(answer);
     };
 
-    $scope.saveBoard = function(evnt) {
+    $scope.savePin = function(evnt) {
       console.log(evnt);
       console.log(evnt.path[2].children[0].children[3].children[1].value)
 
