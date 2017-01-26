@@ -10,9 +10,8 @@ app.controller("SecondCtrl", function($scope, authFactory, $location, toastFacto
       $location.url("/")
     })
     .catch((e)=>{
-      console.log(e)
       //if error, tells user error
-      toastFactory.toastMaker(e.message)
+      toastFactory.toastMaker(e.message, "top right")
     })
 
     // console.log(e.path[2].children[0].children.email.value)
@@ -34,7 +33,7 @@ app.controller("SecondCtrl", function($scope, authFactory, $location, toastFacto
     })
     .catch((e)=>{
       //if error, tells user error
-      toastFactory.toastMaker(e.message)
+      toastFactory.toastMaker(e.message, "top right")
     })//end of catch
 
 

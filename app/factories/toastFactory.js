@@ -1,9 +1,9 @@
 app.factory('toastFactory', function ($mdToast) {
   return {
-     toastMaker : (e) => {
+     toastMaker : (e, p) => {
       $mdToast.show($mdToast.simple()
         .textContent(e)
-        .position("top right")
+        .position(p)
         .hideDelay(2000)
         )//end of show Toast
      } //end of show toastMaker
