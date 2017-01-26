@@ -116,3 +116,15 @@ User Profile Page
     font-weight: bold;
 
   }
+
+  .boardLabel {
+    background-color: #69F0AE;
+  }
+
+  .boardLabel h1 {
+    text-align: center ;
+  }
+
+.userBoard {
+  padding: 2% 5%;
+}

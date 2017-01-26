@@ -1,4 +1,6 @@
-app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, createPinsFactory) {
+
+app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory) {
+
 
 
   //get array of boards for user
@@ -6,6 +8,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
     .then((val) =>{
       $scope.boards = val
     })
+
 
   $scope.goToBoard = (value) => {
   $location()
@@ -30,6 +33,53 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
         });
       })
   };
+
+// Get DATA from firebase
+  getFactory.getData()
+    .then(function (data) {
+      console.log(data.data);
+      $scope.pins = data.data;
+    })
+    // .then(function() {  //Add random col/row spans to each pin to randomize layout
+    //   Object.keys($scope.pins).forEach(function(id) {
+    //     $scope.pins[id].rowspan = random(),
+    //     $scope.pins[id].colspan = random(),
+    //     $scope.pins[id].colspansm = random(),
+    //     $scope.pins[id].colspanxs = random()
+    //   });
+    // });
+
+// // Function to return random number for col/row spans
+//   var random = function() {
+//     var r = Math.random();
+//     if (r < 0.3) {
+//       return 1;
+//     } else if (r < 0.7) {
+//       return 2;
+//     } else {
+//       return 3;
+//     }
+//   };
+
+//goes to selected user board
+$scope.goToBoard = (value) => {
+  let boardUID = value.name
+  $location.url(`/boards/${boardUID}`)
+}
+
+
+//displays user's pins
+$scope.goToPins = ()=>{
+  $(".userPins").removeClass("ng-hide")
+  $(".userBoards").addClass("ng-hide")
+}
+
+//displays user's boards
+$scope.goToBoards = ()=>{
+  $(".userBoards").removeClass("ng-hide")
+  $(".userPins").addClass("ng-hide")
+}
+
 
 
 //function for module that allows you to edit the board name
@@ -196,6 +246,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
           clickOutsideToClose:true,
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
+
 
         })
 
