@@ -1,17 +1,28 @@
 app.controller('FourthCtrl',  function ($scope, getFactory, $routeParams, $mdDialog) {
 
-  let boardUniqueId = $routeParams.boardName
+  $scope.boardUniqueId = $routeParams.boardName
 
   getFactory.getBoards().then((val)=>{
-    console.log("val returned from get board", val.data[boardUniqueId].title)
+    console.log("val returned from get board", val.data[$scope.boardUniqueId].title)
     //get the title of the board name from the board object
-    $scope.boardName = val.data[boardUniqueId].title;
+    $scope.boardName = val.data[$scope.boardUniqueId].title;
   })
 
   getFactory.getData()
     .then(function (data) {
       console.log(data.data);
+
       $scope.pins = data.data;
+    })
+
+    .then(function() {
+      Object.keys($scope.pins).forEach(function(id) {
+        if($scope.pins[id].boardID !== $scope.boardUniqueId) {
+         delete $scope.pins[id];
+        }
+
+      });
+
     })
     .then(function() {  //Add random col/row spans to each pin to randomize layout
       Object.keys($scope.pins).forEach(function(id) {
