@@ -268,7 +268,7 @@ $scope.goToBoards = ()=>{
     console.log(ev);
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'app/partials/pinModalPartial.html',
+      templateUrl: 'app/partials/profilePinPartial.html',
       parent: angular.element(document.body),
       scope: $scope,
       preserveScope: true,
