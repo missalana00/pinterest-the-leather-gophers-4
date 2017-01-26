@@ -180,7 +180,7 @@ $scope.goToBoards = ()=>{
       //console.log(evnt.path[2].children[0].children[2].children[0].children[0].value)
       var boardId = evnt.path[2].children[0].children[2].children[0].children[0].value;
 
-      // GOING TO NEED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
       $scope.boardKey = _.findKey($scope.boardNames, ["title", boardId]);
       console.log($scope.boardKey);
 
