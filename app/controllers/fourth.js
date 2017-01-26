@@ -26,25 +26,22 @@ app.controller('FourthCtrl',  function ($scope, getFactory, $routeParams, $mdDia
     })
     .then(function() {  //Add random col/row spans to each pin to randomize layout
       Object.keys($scope.pins).forEach(function(id) {
-        $scope.pins[id].rowspan = random(),
-        $scope.pins[id].colspan = random(),
-        $scope.pins[id].colspansm = random(),
-        $scope.pins[id].colspanxs = random()
+        $scope.pins[id].rowspan = random()
       });
     });
 
 
-  // Function to return random number for col/row spans
-  // var random = function() {
-  //   var r = Math.random();
-  //   if (r < 0.3) {
-  //     return 1;
-  //   } else if (r < 0.7) {
-  //     return 2;
-  //   } else {
-  //     return 3;
-  //   }
-  // };
+  // Function to return random number for row spans
+   var random = function() {
+     var r = Math.random();
+     if (r < 0.3) {
+       return 1;
+     } else if (r < 0.7) {
+       return 2;
+     } else {
+       return 3;
+     }
+   };
 
   //mdDialog opens when save button is click on any pin
   $scope.status = '  ';

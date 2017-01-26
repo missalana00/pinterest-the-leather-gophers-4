@@ -10,7 +10,7 @@
 
       <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
 
-        <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="{{ pin.colspan }}" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
+        <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="2" md-colspan-sm="2" md-colspan-xs="2">
 
           <img src="{{ pin.img }}" alt="">
           <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
