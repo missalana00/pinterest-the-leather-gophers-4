@@ -1,12 +1,12 @@
 app.factory('createBoardFactory',  function($http){
   return {
     writeBoard : (result) => {
-      // let idOfBoard = ""
-      // if(result !== null) {
+        let userID = firebase.auth().currentUser
         let newBoard = {
-          "title" : result
+          "title" : result,
+          "uid" : userID.uid
         } // end of newboard object
-
+        console.log("newboard object", newBoard)
         return $http
         .post("https://pinterestleathergophers.firebaseio.com/boards.json", JSON.stringify(newBoard))
         .then((val)=>{
@@ -18,7 +18,7 @@ app.factory('createBoardFactory',  function($http){
 
     },// end of writeBoard()
     renameBoard : (newName, boardName) => {
-      console.log("boardName", boardName)
+
         let boardUID = boardName
         let rename = {
           "title" : newName
