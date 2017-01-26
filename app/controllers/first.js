@@ -20,9 +20,9 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   // Function to return random number for col/row spans
   var random = function() {
     var r = Math.random();
-    if (r < 0.3) {
+    if (r < 0.2) {
       return 1;
-    } else if (r < 0.7) {
+    } else if (r < 0.5) {
       return 2;
     } else {
       return 3;

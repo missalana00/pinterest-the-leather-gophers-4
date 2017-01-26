@@ -9,9 +9,9 @@
 
 <!--Pin Cards-->
 <div flex ng-cloak class="gridListdemoBasicUsage">
-  <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+  <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="2px" md-gutter-gt-sm="2px">
 
-    <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="{{ pin.colspan }}" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
+    <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="2" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
       <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
         <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
       </md-button> -->
