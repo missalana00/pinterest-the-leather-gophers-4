@@ -1,10 +1,10 @@
-app.factory('authFactory', function () {
+app.factory('authFactory', function ($location, $q) {
   return {
     login: (email, password) => {
-      firebase.auth().signInWithEmailAndPassword(email, password)
+     return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
     },
     register: (email, password) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
+      return $q.resolve(firebase.auth().createUserWithEmailAndPassword(email, password))
     }
   }
     // getUserId() {

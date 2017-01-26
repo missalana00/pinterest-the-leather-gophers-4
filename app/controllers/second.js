@@ -1,4 +1,4 @@
-app.controller("SecondCtrl", function($scope, authFactory) {
+app.controller("SecondCtrl", function($scope, authFactory, $location, toastFactory) {
   console.log("SecondCtrl")
 
   $scope.loginButton = function (e) {
@@ -6,6 +6,14 @@ app.controller("SecondCtrl", function($scope, authFactory) {
     var password = e.path[2].children[1].children.password.value
 
     authFactory.login(email, password)
+    .then(()=>{
+      $location.url("/")
+    })
+    .catch((e)=>{
+      console.log(e)
+      //if error, tells user error
+      toastFactory.toastMaker(e.message)
+    })
 
     // console.log(e.path[2].children[0].children.email.value)
     // console.log(e.path[2].children[1].children.password.value)
@@ -19,6 +27,15 @@ app.controller("SecondCtrl", function($scope, authFactory) {
     console.log(p)
 
     authFactory.register(email, password)
+    .then((val)=>{
+      console.log(val)
+      //if user successfully registers, redirects to homepage
+      $location.url("/")
+    })
+    .catch((e)=>{
+      //if error, tells user error
+      toastFactory.toastMaker(e.message)
+    })//end of catch
 
 
   } //registerButton
