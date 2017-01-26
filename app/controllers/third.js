@@ -112,7 +112,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
   }; //end of showPrompt Function
 
 
-  function DialogController($scope, $mdDialog) {
+  function DialogController($scope, $mdDialog, getFactory) {
     $scope.hide = function () {
       $mdDialog.hide();
     };
@@ -124,6 +124,23 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
     $scope.answer = function (answer) {
       $mdDialog.hide(answer);
     };
+
+    $scope.saveBoard = function(evnt) {
+      console.log(evnt);
+      console.log(evnt.path[2].children[0].children[3].children[1].value)
+
+      var tagData = evnt.path[2].children[0].children[3].children[1].value;
+      //stores the image url, title, tags into an object
+      var pinData = {
+        img: $scope.result1,
+        title: $scope.result2,
+        tag: tagData
+      }
+      console.log(pinData)
+
+      createPinsFactory.postPin(pinData).then(console.log)
+
+    }
 
      function createFilterFor(query) {
       var lowercaseQuery = angular.lowercase(query);
@@ -157,7 +174,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
       console.log(firstPrompt)
 
     $mdDialog.show(firstPrompt).then(function(result) {
-      console.log(result)
+      $scope.result1 = result;
       var secondPrompt = $mdDialog.prompt()
       .title('Enter Title')
       .textContent('Enter a title for your pin')
@@ -168,7 +185,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
       .ok('Proceed to add to your board')
       .cancel('Cancel New Pin');
       $mdDialog.show(secondPrompt).then(function (result2){
-
+        $scope.result2 = result2;
         $mdDialog.show({
           controller: DialogController,
           templateUrl: 'app/partials/createPinPartial.html',
@@ -179,21 +196,6 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
           clickOutsideToClose:true,
           disableParentScroll: true,
           fullscreen: $scope.customFullscreen,  // Only for -xs, -sm breakpoints.
-
-        }).then(function(evnt) {
-          console.log(evnt);
-          console.log(evnt.path[1].children[2].children.input_4.value)
-
-          var tagData = evnt.path[1].children[2].children.input_4.value
-          //stores the image url, title, tags into an object
-          var pinData = {
-            img: result,
-            title: result2,
-            tag: tagData
-          }
-          console.log(pinData)
-
-          createPinsFactory.postPin(pinData).then(console.log)
 
         })
 
