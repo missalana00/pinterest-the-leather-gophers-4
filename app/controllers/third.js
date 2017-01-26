@@ -4,14 +4,31 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
 
 
   //get array of boards for user
+  $scope.refresh = function() {
   let boardsArray = boardArrayFactory.boardArray()
     .then((val) =>{
       $scope.boards = val
+      console.log($scope.boards)
     })
+    .then(getFactory.getData)
+    .then(function (data) {
+      $scope.pins = data.data;
+      console.log($scope.pins);
+    })
+    .then(function() {
 
+      for(var i = 0; i < $scope.boards.length; i++) {
+        $scope.boards[i].images = [];
 
-
-
+        Object.keys($scope.pins).forEach(function(id) {
+          if($scope.pins[id].boardID === $scope.boards[i].name) {
+            $scope.boards[i].images.push($scope.pins[id].img);
+          }
+        })
+      }
+    });
+}
+  $scope.refresh();
   $scope.boardArray = "";
   $scope.fetchBoards = function () {
     getFactory.getBoards().then((data) => {
@@ -34,32 +51,8 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
       })
   };
 
-// Get DATA from firebase
-  getFactory.getData()
-    .then(function (data) {
-      //console.log(data.data);
-      $scope.pins = data.data;
-    })
-    // .then(function() {  //Add random col/row spans to each pin to randomize layout
-    //   Object.keys($scope.pins).forEach(function(id) {
-    //     $scope.pins[id].rowspan = random(),
-    //     $scope.pins[id].colspan = random(),
-    //     $scope.pins[id].colspansm = random(),
-    //     $scope.pins[id].colspanxs = random()
-    //   });
-    // });
 
-// // Function to return random number for col/row spans
-//   var random = function() {
-//     var r = Math.random();
-//     if (r < 0.3) {
-//       return 1;
-//     } else if (r < 0.7) {
-//       return 2;
-//     } else {
-//       return 3;
-//     }
-//   };
+
 
 //goes to selected user board
 $scope.goToBoard = (value) => {
@@ -151,6 +144,7 @@ $scope.goToBoards = ()=>{
         .then((val)=>{
           console.log("val from first function", val)
           nameBoardFactory.addName(val)
+          $scope.refresh();
         })
        }
        //if new board wasn't created, do nothing
@@ -195,6 +189,7 @@ $scope.goToBoards = ()=>{
 
       createPinsFactory.postPin(pinData).then(console.log)
       $mdDialog.cancel();
+      $scope.refresh();
     }
 
     // next three functions are used for autocomplete of board selection
