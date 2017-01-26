@@ -1,7 +1,7 @@
 
 app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory) {
 
-
+$scope.UserName = firebase.auth().currentUser.email
 
   //get array of boards for user
   $scope.refresh = function() {
