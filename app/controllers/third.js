@@ -37,7 +37,7 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
 // Get DATA from firebase
   getFactory.getData()
     .then(function (data) {
-      console.log(data.data);
+      //console.log(data.data);
       $scope.pins = data.data;
     })
     // .then(function() {  //Add random col/row spans to each pin to randomize layout
