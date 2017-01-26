@@ -188,8 +188,9 @@ $scope.goToBoards = ()=>{
 
 
       createPinsFactory.postPin(pinData).then(console.log)
+        .then($scope.refresh)
       $mdDialog.cancel();
-      $scope.refresh();
+
     }
 
     // next three functions are used for autocomplete of board selection
