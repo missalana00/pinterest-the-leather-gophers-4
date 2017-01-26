@@ -25,19 +25,38 @@ app.config(($routeProvider, $locationProvider, $mdIconProvider) => {
     } // end of checkForAuth object
 
 
+  const showHideLogout = {
+    showHideLogout: function() {
+       const authReady = firebase.auth().onAuthStateChanged(user => {
+         authReady()
+           if (!user) {
+             $('.logoutButton').addClass('ng-hide')
+           } else if (user) {
+             $('.logoutButton').removeClass("ng-hide")
+           }
+
+      }) //authReady
+
+    }
+  } //showHideLogout
+
+
   $routeProvider
     .when("/", {
       controller: "FirstCtrl",
       templateUrl: "app/partials/firstpartial.html",
+      resolve: showHideLogout
     })
     .when("/login", {
       controller: "SecondCtrl",
       templateUrl: "app/partials/secondpartial.html",
+      resolve: showHideLogout
     })
     .when("/profile", {
       controller: "ThirdCtrl",
       templateUrl: "app/partials/thirdpartial.html",
       resolve : checkForAuth
+
     })
     .when("/boards/:boardName", {
       controller: "FourthCtrl",
