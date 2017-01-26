@@ -18,10 +18,9 @@ app.controller("SecondCtrl", function($scope, authFactory) {
     console.log(e)
     console.log(p)
 
-
     authFactory.register(email, password)
 
 
-  }
+  } //registerButton
 
-})
+}) //SecondCtrl
