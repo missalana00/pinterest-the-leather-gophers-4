@@ -4,17 +4,36 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog) {
   // Get DATA from firebase
   getFactory.getData()
     .then(function (data) {
-      console.log(data.data);
-      $scope.pins = data.data;
+      $scope.result = data.data;
+
     })
     .then(function() {  //Add random col/row spans to each pin to randomize layout
-      Object.keys($scope.pins).forEach(function(id) {
-        $scope.pins[id].rowspan = random(),
-        $scope.pins[id].colspan = random(),
-        $scope.pins[id].colspansm = random(),
-        $scope.pins[id].colspanxs = random()
+      Object.keys($scope.result).forEach(function(id) {
+        $scope.result[id].rowspan = random()
       });
-    });
+    })
+    .then(() => {
+      $scope.pins = [];
+      var keys = Object.keys($scope.result);
+      keys.forEach(function(key){
+        $scope.pins.push($scope.result[key]);
+      });
+      console.log($scope.pins.length);
+    shuffleArray(($scope.pins))
+    })
+
+
+  //http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  // Shuffles array
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
 
   // Function to return random number for col/row spans

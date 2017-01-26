@@ -26,10 +26,7 @@ app.controller('FourthCtrl',  function ($scope, getFactory, $routeParams, $mdDia
     })
     .then(function() {  //Add random col/row spans to each pin to randomize layout
       Object.keys($scope.pins).forEach(function(id) {
-        $scope.pins[id].rowspan = random(),
-        $scope.pins[id].colspan = random(),
-        $scope.pins[id].colspansm = random(),
-        $scope.pins[id].colspanxs = random()
+        $scope.pins[id].rowspan = random()
       });
     });
 
