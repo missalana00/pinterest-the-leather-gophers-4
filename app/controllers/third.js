@@ -113,19 +113,33 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
 
 
   function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
+    $scope.hide = function () {
       $mdDialog.hide();
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
       $mdDialog.cancel();
     };
 
-    $scope.answer = function(answer) {
+    $scope.answer = function (answer) {
       $mdDialog.hide(answer);
     };
 
-  }
+     function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(board) {
+        return (board.value.indexOf(lowercaseQuery) === 0);
+      };
+    };
+
+
+    $scope.querySearch = function(query) {
+      return query ? $scope.oneBoard.filter( createFilterFor(query) ) : $scope.oneBoard;
+    };
+
+  };
+
 
   $scope.createPin = function(e) {
     console.log(e);
