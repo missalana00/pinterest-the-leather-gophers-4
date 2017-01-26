@@ -40,14 +40,14 @@
 
               <!--Pin Cards-->
               <div flex ng-cloak class="userPins ng-hide">
-                <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+                <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="22px" md-gutter-gt-sm="2px">
 
-                  <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="{{ pin.colspan }}" md-colspan-sm="{{ pin.colspansm }}" md-colspan-xs="{{ pin.colspanxs }}">
+                  <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
                     <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
                       <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
                     </md-button> -->
                     <img src="{{ pin.img }}" alt="">
-                    <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
+                    <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">View</md-button>
                     <md-grid-tile-footer ng-show="open">
                       <h3>{{ pin.title }}</h3>
                     </md-grid-tile-footer>

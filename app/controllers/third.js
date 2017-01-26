@@ -176,11 +176,10 @@ $scope.goToBoards = ()=>{
     };
 
     $scope.savePin = function(evnt) {
-      //console.log(evnt);
-      //console.log(evnt.path[2].children[0].children[2].children[0].children[0].value)
+
       var boardId = evnt.path[2].children[0].children[2].children[0].children[0].value;
 
-
+      // Find selected boards uid
       $scope.boardKey = _.findKey($scope.boardNames, ["title", boardId]);
       console.log($scope.boardKey);
 
@@ -192,12 +191,13 @@ $scope.goToBoards = ()=>{
         tag: tagData,
         boardID: $scope.boardKey
       }
-      //console.log(pinData)
+
 
       createPinsFactory.postPin(pinData).then(console.log)
       $mdDialog.cancel();
     }
 
+    // next three functions are used for autocomplete of board selection
      function createFilterFor(query) {
       var lowercaseQuery = angular.lowercase(query);
 
@@ -205,7 +205,6 @@ $scope.goToBoards = ()=>{
         return (board.value.indexOf(lowercaseQuery) === 0);
       };
     };
-
 
     $scope.querySearch = function(query) {
       return query ? $scope.oneBoard.filter( createFilterFor(query) ) : $scope.oneBoard;
@@ -260,6 +259,26 @@ $scope.goToBoards = ()=>{
   }) //first .then
 
  } //$scope.createPin
+
+
+  $scope.showAdvanced = function(ev) {
+    //console.log(ev.path[2].children[0].src);
+    $scope.pinImg = ev.path[1].children[0].src;
+    $scope.pinTitle = ev.path[1].children[2].innerText;
+    console.log(ev);
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'app/partials/pinModalPartial.html',
+      parent: angular.element(document.body),
+      scope: $scope,
+      preserveScope: true,
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      disableParentScroll: true,
+      fullscreen: $scope.customFullscreen,
+    });
+  };
+
 
 
 
