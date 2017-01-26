@@ -35,8 +35,9 @@ User Profile Page
   min-width: 50%;
 }
 
-
-
+.hide {
+  display: none;
+}
 
 
 

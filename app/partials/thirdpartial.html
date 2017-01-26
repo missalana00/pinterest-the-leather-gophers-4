@@ -46,11 +46,12 @@
                     <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
                       <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
                     </md-button> -->
-                    <img src="{{ pin.img }}" alt="">
-                    <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">View</md-button>
-                    <md-grid-tile-footer ng-show="open">
-                      <h3>{{ pin.title }}</h3>
-                    </md-grid-tile-footer>
+
+                    <md-button class="md-raised" ng-click="showAdvanced($event)">
+                      <img src="{{ pin.img }}" alt="">
+                      <h3 class="hide">{{ pin.title }}</h3>
+                    </md-button>
+
                   </md-grid-tile>
 
                 </md-grid-list>
@@ -85,7 +86,11 @@
                     </md-card-actions>
 
                     </md-card-title>
-                    <img ng-src="http://i.imgur.com/jUoZ97r.jpg" class="md-card-image" alt="humours Star Wars Cartoon">
+                    <md-grid-list  md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="0" md-gutter-gt-sm="0">
+                     <md-grid-tile ng-repeat="img in board.images">
+                        <img ng-src="{{ img }}" height="100%" width="100%" class="md-card-image" alt="humours Star Wars Cartoon">
+                      </md-grid-tile>
+                    </md-grid-list>
                     <md-card-content>
                       <p>
                         put tags here.
