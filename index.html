@@ -24,6 +24,7 @@
         <!--<input type="text" ng-model="searchInput" ng-controller="FirstCtrl">-->
       <!--</md-nav-item>-->
         <!-- START SEARCH BAR -->
+
         <md-content ng-controller="FirstCtrl" ng-show="currentNavItem === 'page1'">
           <form ng-submit="$event.preventDefault()">
             <md-autocomplete
@@ -43,11 +44,12 @@
             </md-autocomplete>
           </form>
         </md-content>
+
         <!-- END SEARCH BAR -->
 
 
 
-      <md-nav-item md-nav-click="logoutofFirebase($event)"  class="logoutButton" name="page5" flex-offset-xl="70" flex-offset-lg="60" flex-offset-md="50">Logout</md-nav-item>
+      <md-nav-item md-nav-click="logoutofFirebase($event)"  class="logoutButton" name="page5" flex-offset-xl="40" flex-offset-lg="40" flex-offset-md="30">Logout</md-nav-item>
 
 
 
