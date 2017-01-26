@@ -5,8 +5,15 @@ app.factory("getFactory", function($http) {
   }
 
   function getBoards() {
-    return $http.get("https://pinterestleathergophers.firebaseio.com/boards.json")
-  }
+    // return $q.resolve(firebase.auth().currentUser)
+    // .then(()=> {
+    //   // console.log("val.uid", val.uid)
+    //   let fireUser = firebase.auth().currentUser.uid
+    //    return $http.get(`https://pinterestleathergophers.firebaseio.com/boards.json?orderBy="uid"&equalTo="${fireUser}"`)
+    // })
+    return $http.get(`https://pinterestleathergophers.firebaseio.com/boards.json`)
+    }
+
 
 
   return {

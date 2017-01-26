@@ -2,6 +2,7 @@ app.controller("AppCtrl", function($scope, $location) {
   console.log("AppCtrl")
 
 
+
     $scope.currentNavItem = 'page1';
     $scope.open = false;
 
@@ -20,5 +21,6 @@ app.controller("AppCtrl", function($scope, $location) {
         $location.url("/#")
 
     }
+
 
 });
