@@ -7,8 +7,5 @@ app.factory('authFactory', function ($location, $q) {
       return $q.resolve(firebase.auth().createUserWithEmailAndPassword(email, password))
     }
   }
-    // getUserId() {
-    //   return firebase.auth().currentUser.uid
-    // }
 
 })
