@@ -34,7 +34,7 @@ testUser()
 
 
 
-
+  $scope.userPins = [];
   //get array of boards for user
   $scope.refresh = function() {
   let boardsArray = boardArrayFactory.boardArray()
@@ -55,6 +55,7 @@ testUser()
         Object.keys($scope.pins).forEach(function(id) {
           if($scope.pins[id].boardID === $scope.boards[i].name) {
             $scope.boards[i].images.push($scope.pins[id].img);
+            $scope.userPins.push($scope.pins[id]);
           }
         })
       }
