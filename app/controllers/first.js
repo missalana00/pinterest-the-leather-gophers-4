@@ -122,5 +122,3 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory
   /********* End autocomplete **********/
 
 });
-
-

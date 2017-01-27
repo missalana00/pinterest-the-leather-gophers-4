@@ -1,9 +1,10 @@
-app.controller("SecondCtrl", function($scope, authFactory, $location, toastFactory) {
-  console.log("SecondCtrl")
 
-  $scope.loginButton = function (e) {
-    var email = e.path[2].children[0].children.email.value
-    var password = e.path[2].children[1].children.password.value
+
+app.controller("SecondCtrl", function($scope, authFactory, $location, toastFactory) {
+
+  $scope.loginButton = function (e, p) {
+    var email = e
+    var password = p
 
     authFactory.login(email, password)
     .then(()=>{
@@ -21,8 +22,7 @@ app.controller("SecondCtrl", function($scope, authFactory, $location, toastFacto
 
     var email = e
     var password = p
-    console.log(e)
-    console.log(p)
+
 
     authFactory.register(email, password)
     .then(()=>{
@@ -35,5 +35,29 @@ app.controller("SecondCtrl", function($scope, authFactory, $location, toastFacto
     })//end of catch
 
   } //registerButton
+
+  $scope.login = function () {
+
+    var provider = new firebase.auth.GithubAuthProvider();
+
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+  }
 
 }) //SecondCtrl
