@@ -3,9 +3,9 @@
 app.controller("SecondCtrl", function($scope, authFactory, $location, toastFactory) {
   console.log("SecondCtrl")
 
-  $scope.loginButton = function (e) {
-    var email = e.path[2].children[0].children.email.value
-    var password = e.path[2].children[1].children.password.value
+  $scope.loginButton = function (e, p) {
+    var email = e
+    var password = p
 
     authFactory.login(email, password)
     .then(()=>{
