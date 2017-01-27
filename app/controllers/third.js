@@ -13,6 +13,7 @@ function tryAgain() {
 //once a user is found, run these two functions
   $scope.UserName = firebase.auth().currentUser.email
   $scope.refresh()
+  $(".progressBar").addClass("ng-hide")
 
 }
 //test for current user, if not found, will call tryagain function
@@ -22,6 +23,7 @@ function testUser() {
     return
   }
   $scope.UserName = firebase.auth().currentUser.email
+  $(".progressBar").addClass("ng-hide")
 }
 //calls the test for User function
 testUser()

@@ -64,18 +64,19 @@
 <!-- this is the content for user boards -->
              <div class="userBoards">
 
-
-<!--                 <div layout="row" layout-sm="column" layout-align="space-around">
-                  <md-progress-circular ng-disabled="!vm.activated" class="md-hue-2" md-diameter="20px"></md-progress-circular>
-                </div> -->
-
-
               <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
                 <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
                 Create New Board
                 </md-button>
 
               </div>
+
+              <div class="progressBar" layout="row" layout-sm="column" layout-align="space-around">
+                <md-progress-circular md-mode="indeterminate">
+
+                </md-progress-circular>
+              </div>
+
               <md-content class="md-padding" layout-xs="column" layout="row">
 
                 <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="board in boards" class="userBoardsCollection">
