@@ -1,7 +1,34 @@
 
-app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory) {
+app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory, $interval) {
 
-$scope.UserName = firebase.auth().currentUser.email
+
+
+function tryAgain() {
+  console.log("current user", firebase.auth().currentUser)
+  if(firebase.auth().currentUser === null) {
+    console.log("trying again")
+    setTimeout(tryAgain, 500)
+    return
+    }
+
+  $scope.UserName = firebase.auth().currentUser.email
+  $scope.refresh()
+
+}
+
+function testUser() {
+  if(firebase.auth().currentUser === null) {
+    tryAgain()
+    return
+  }
+  $scope.UserName = firebase.auth().currentUser.email
+}
+
+testUser()
+
+
+
+
 
   //get array of boards for user
   $scope.refresh = function() {
@@ -282,6 +309,27 @@ $scope.goToBoards = ()=>{
       fullscreen: $scope.customFullscreen,
     });
   };
+
+// function progress() {
+//       var self = this;
+
+//       self.activated = true;
+//       self.determinateValue = 30;
+
+//       // Iterate every 100ms, non-stop and increment
+//       // the Determinate loader.
+//       $interval(function() {
+
+//         self.determinateValue += 1;
+//         if (self.determinateValue > 100) {
+//           self.determinateValue = 30;
+//         }
+
+//       }, 100);
+//     }
+
+
+
 
 
 
