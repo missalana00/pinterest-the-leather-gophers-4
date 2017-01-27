@@ -15,7 +15,8 @@
     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
       <md-nav-item md-nav-href="#/" name="page1">Home</md-nav-item>
       <md-nav-item md-nav-href="#/login" name="page2">Login</md-nav-item>
-      <md-nav-item md-nav-href="#/profile" name="page3">Profile</md-nav-item>
+      <md-nav-item md-nav-click="logoutofFirebase($event)" class="logoutButton" name="page3">Logout</md-nav-item>
+      <md-nav-item md-nav-href="#/profile" name="page4">Profile</md-nav-item>
 
         <!-- START SEARCH BAR -->
 
@@ -43,7 +44,7 @@
 
 
 
-      <md-nav-item md-nav-click="logoutofFirebase($event)"  class="logoutButton" name="page5" flex-offset-xl="40" flex-offset-lg="40" flex-offset-md="30">Logout</md-nav-item>
+
 
 
 
