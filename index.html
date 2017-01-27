@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="app/lib/angular-material/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="app/styles/main.css">
+</head>
+<body ng-app="myApp">
+
+
+<div ng-controller="AppCtrl" ng-cloak>
+  <md-content class="md-padding">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-href="#/" name="page1">Home</md-nav-item>
+      <md-nav-item md-nav-href="#/login" class="logInButton" name="page2">Login</md-nav-item>
+      <md-nav-item md-nav-click="logoutofFirebase($event)" class="logoutButton" name="page3">Logout</md-nav-item>
+      <md-nav-item md-nav-href="#/profile" name="page4">Profile</md-nav-item>
+
+
+        <!-- START SEARCH BAR -->
+
+        <md-content ng-show="currentNavItem === 'page1'">
+          <form ng-submit="$event.preventDefault()">
+            <md-autocomplete
+                    md-no-cache="noCache"
+                    md-selected-item="selectedItem"
+                    md-search-text="$root.searchText"
+                    md-items="item in querySearch(searchText)"
+                    md-item-text="item.display"
+                    md-min-length="1"
+                    placeholder="Search">
+              <md-item-template>
+                <span md-highlight-text="searchText">{{item.display}}</span>
+              </md-item-template>
+              <md-not-found>
+                No pins tagged with "{{searchText}}".
+              </md-not-found>
+            </md-autocomplete>
+          </form>
+        </md-content>
+
+        <!-- END SEARCH BAR -->
+
+
+
+
+
+
+
+  </md-content>
+</div>
+
+<div class="container">
+  <div ng-view></div>
+</div>
+<script src="app/lib/angular/angular.js"></script>
+<script src="app/lib/jquery/dist/jquery.min.js"></script>
+<script src="app/lib/angular-material/angular-material.min.js"></script>
+<script src="app/lib/angular-animate/angular-animate.min.js"></script>
+<script src="app/lib/angular-aria/angular-aria.min.js"></script>
+<script src="app/lib/angular-messages/angular-messages.min.js"></script>
+<script src="app/lib/angular-route/angular-route.js"></script>
+<script src="app/lib/firebase/firebase.js"></script>
+<script src="app/lib/lodash/dist/lodash.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/config.js"></script>
+<script src="app/controllers/first.js"></script>
+<script src="app/controllers/appCtrl.js"></script>
+<script src="app/controllers/second.js"></script>
+<script src="app/controllers/third.js"></script>
+<script src="app/controllers/fourth.js"></script>
+<script src="app/factories/getFactory.js"></script>
+<script src="app/factories/createPins.js"></script>
+<script src="app/factories/createBoardFactory.js"></script>
+<script src="app/factories/nameBoardFactory.js"></script>
+<script src="app/factories/boardArrayFactory.js"></script>
+<script src="app/factories/authFactory.js"></script>
+<script src="app/factories/toastFactory.js"></script>
+
+
+</body>
+</html>

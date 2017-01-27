@@ -1,0 +1,116 @@
+<div class="container flex">
+
+  <div layout="row">
+
+<!-- user profile card -->
+  <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch flex="auto" class="userCard">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">My Pins</span>
+            <span class="md-subhead">{{UserName}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+          <div class="md-media-xl card-media"></div>
+
+          <!-- user image -->
+          <div>
+            <img class="userImage" src="http://i.dailymail.co.uk/i/pix/2014/01/29/article-2548006-1B0B68CB00000578-424_636x434.jpg" alt="user picture" width="100" height="100">
+          </div>
+        </md-card-content>
+      </md-card>
+
+  </div> <!-- end of user card -->
+
+<!-- Sub-nav bar and page content in user page -->
+  <div layout="row">
+    <div class="submenu" flex="80" flex-offset="10">
+        <div ng-controller="AppCtrl" ng-cloak>
+            <md-content class="md-padding">
+              <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-click="goto('page1')" name="Create Pin" ng-click="createPin($event)">Create Pin</md-nav-item>
+              <md-nav-item md-nav-click="goto('page1')" name="Pins" ng-click="goToPins()">Pins</md-nav-item>
+              <md-nav-item md-nav-click="goto('page2')" name="Boards" ng-click="goToBoards()">Boards</md-nav-item>
+              <!-- <md-nav-item md-nav-click="goto('page3')" name="Likes">Likes</md-nav-item> -->
+
+              </md-nav-bar>  <!-- end of nav bar -->
+
+            <div class="ext-content">  <!-- beginning of board/pins content -->
+
+
+              <!--Pin Cards-->
+              <div flex ng-cloak class="userPins ng-hide">
+                <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="22px" md-gutter-gt-sm="2px">
+
+                  <md-grid-tile ng-repeat="pin in userPins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                    <!-- <md-button class="md-icon-button md-accent favoriteButton" aria-label="Favorite">
+                      <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                    </md-button> -->
+
+                    <md-button class="md-raised" ng-click="showAdvanced($event)">
+                      <img src="{{ pin.img }}" alt="">
+                      <h3 class="hide">{{ pin.title }}</h3>
+                    </md-button>
+
+                  </md-grid-tile>
+
+                </md-grid-list>
+              </div>
+
+
+
+
+
+<!-- this is the content for user boards -->
+             <div class="userBoards">
+
+              <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
+                <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
+                Create New Board
+                </md-button>
+
+              </div>
+
+              <div class="progressBar" layout="row" layout-sm="column" layout-align="space-around">
+                <md-progress-circular md-mode="indeterminate">
+
+                </md-progress-circular>
+              </div>
+
+              <md-content class="md-padding" layout-xs="column" layout="row">
+
+                <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="board in boards" class="userBoardsCollection">
+                  <md-card data-name="{{board.name}}">
+                    <md-card-title>
+                    <md-card-actions layout="column" layout-align="start">
+                      <md-button>
+                        <span class="md-headline boardTitle" ng-click=goToBoard(board)>{{board.title}}</span>
+                      </md-button>
+                      <md-button ng-click=editBoardName(board)>
+                        Edit Board
+                      </md-button>
+                    </md-card-actions>
+
+                    </md-card-title>
+                    <md-grid-list  md-cols-xs="2" md-cols-sm="2" md-cols-md="8" md-cols-gt-md="5" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="0" md-gutter-gt-sm="0">
+                     <md-grid-tile ng-repeat="img in board.images">
+                        <img ng-src="{{ img }}" height="100%" width="100%" class="md-card-image" alt="humours Star Wars Cartoon">
+                      </md-grid-tile>
+                    </md-grid-list>
+
+                  </md-card>
+                </div> <!-- end of card template-->
+
+
+              </div> <!-- end of boards div -->
+
+            </div> <!-- end of div for page content -->
+          </md-content>
+        </div>
+    </div>
+  </div> <!-- end of div for submenu and page content
+ -->
+
+
+</div> <!-- end of div container for page
+ -->

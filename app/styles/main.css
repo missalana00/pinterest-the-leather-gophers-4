@@ -1,0 +1,120 @@
+
+.navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; }
+
+
+
+
+
+/***********
+User Profile Page
+****************/
+
+/*limits size of userCard*/
+.userCard {
+  max-height: 10em;
+
+}
+
+/*sets background color of usercard*/
+.userCard md-card-title {
+  background-color: rgb(255,64,129);
+}
+
+/*sets color of userImage border, and pulls userImage higher up into the card*/
+.userImage {
+  margin-top: -25%;
+  border: 2px solid rgb(255, 64, 129);
+}
+
+/***user boards***/
+
+.userBoardsCollection {
+  min-width: 50%;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+
+  /**************
+    Pin styling
+  **************/
+
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px; }
+
+
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
+
+.card img{
+  height: 100%;
+  width: 100%;
+
+}
+
+.saveButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+
+/**************
+ Dialog styles
+**************/
+
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }
+
+/**************
+ Board Stylings on User page
+**************/
+
+
+  .boardTitle {
+    font-weight: bold;
+
+  }
+
+  .boardLabel {
+    background-color: #69F0AE;
+  }
+
+  .boardLabel h1 {
+    text-align: center ;
+  }
+
+.userBoard {
+  padding: 2% 5%;
+}
+
+.githubImg {
+  height: 40px;
+  width: 40px;
+  margin-left: 2em;
+}

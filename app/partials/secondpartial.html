@@ -1,0 +1,56 @@
+<div layout="column" ng-cloak>
+
+  <md-content layout-padding>
+    <form name="userForm">
+      <div layout-xs="column" layout-sm="column" layout-align="space-between center">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Email</label>
+            <input name="email" ng-model="userEmail"
+                   required minlength="7" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+            <div class="hint" ng-show="showHints">How can we reach you?</div>
+            <div ng-messages="userForm.email.$error" ng-hide="showHints">
+              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                Your email must be between 7 and 100 characters long and look like an e-mail address.
+              </div>
+            </div>
+          </md-input-container>
+        </div> <!--row-->
+
+      <div flex="5" hide-xs hide-sm>
+        <!-- Spacer //-->
+      </div>
+
+      <div layout-gt-sm="row">
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input name="password" type="password" ng-model="userPassword" required minlength="6" maxlength="100"/>
+
+          <div class="hint" ng-show="showHints">Please enter a password with a minimum of 6 characters</div>
+
+          <div ng-messages="userForm.email.$error" ng-hide="showHints">
+            <div ng-message-exp="['required', 'minlength']">
+              Your password must be a minumum of 6 characters long.
+            </div>
+          </div>
+        </md-input-container>
+
+      </div> <!--row-->
+
+
+      <div layout-gt-sm="row">
+        <md-button type="submit" ng-click="loginButton(userEmail, userPassword)">Login</md-button>
+        <md-button type="submit" ng-click="registerButton(userEmail, userPassword)">Register</md-button>
+        <img class="githubImg" src="images/github.svg" ng-click = "login()" alt="Github Signin">
+
+      </div>
+
+
+
+    </div> <!--end of layout-xs="column" -->
+
+  </form>
+
+</div> <!--layout="column"
