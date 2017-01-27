@@ -8,6 +8,7 @@ app.controller("SecondCtrl", function($scope, authFactory, $location, toastFacto
     authFactory.login(email, password)
     .then(()=>{
       $location.url("/")
+      //$root.currentNavItem = "page1";
     })
     .catch((e)=>{
       //if error, tells user error via toast

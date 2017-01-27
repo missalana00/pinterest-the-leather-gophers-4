@@ -17,15 +17,15 @@
       <md-nav-item md-nav-href="#/login" name="page2">Login</md-nav-item>
       <md-nav-item md-nav-href="#/profile" name="page3">Profile</md-nav-item>
 
-      <md-nav-item md-nav-href="#/third" name="page4">???</md-nav-item>
+      <!--<md-nav-item md-nav-href="#/third" name="page4">???</md-nav-item>-->
 
-      <md-nav-item md-nav-href="#/second" name="page5">???</md-nav-item>
+      <!--<md-nav-item md-nav-href="#/second" name="page5">???</md-nav-item>-->
       <!--<md-nav-item md-nav-href="#/">-->
         <!--<input type="text" ng-model="searchInput" ng-controller="FirstCtrl">-->
       <!--</md-nav-item>-->
         <!-- START SEARCH BAR -->
 
-        <md-content ng-controller="FirstCtrl" ng-show="currentNavItem === 'page1'">
+        <md-content ng-show="currentNavItem === 'page1'">
           <form ng-submit="$event.preventDefault()">
             <md-autocomplete
                     md-no-cache="noCache"
@@ -39,7 +39,7 @@
                 <span md-highlight-text="searchText">{{item.display}}</span>
               </md-item-template>
               <md-not-found>
-                No pins tagged with "{{searchText}}" were found.
+                No pins tagged with "{{searchText}}".
               </md-not-found>
             </md-autocomplete>
           </form>

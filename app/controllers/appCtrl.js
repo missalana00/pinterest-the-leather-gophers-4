@@ -18,8 +18,8 @@ app.controller("AppCtrl", function($scope, $location) {
 
     $scope.logoutofFirebase = function (e) {
         firebase.auth().signOut()
-        $location.url("/#")
-
+        $location.url("login")
+      $scope.currentNavItem = 'page2';
     }
 
 
