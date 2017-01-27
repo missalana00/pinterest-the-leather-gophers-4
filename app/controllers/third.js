@@ -1,5 +1,37 @@
 
-app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory) {
+app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardFactory, nameBoardFactory, boardArrayFactory, $location, createPinsFactory, $interval) {
+
+
+
+function tryAgain() {
+  //if there is not current user, wait .5 sec, then try checking for one again
+  if(firebase.auth().currentUser === null) {
+    console.log("trying again")
+    setTimeout(tryAgain, 500)
+    return
+    }
+//once a user is found, run these two functions
+  $scope.UserName = firebase.auth().currentUser.email
+  $scope.refresh()
+  //hide the progress bar
+  $(".progressBar").addClass("ng-hide")
+
+}
+//test for current user, if not found, will call tryagain function
+function testUser() {
+  if(firebase.auth().currentUser === null) {
+    $(".progressBar").removeClass("ng-hide")
+    tryAgain()
+    return
+  }
+  $scope.UserName = firebase.auth().currentUser.email
+  //hide the progress bar
+  $(".progressBar").addClass("ng-hide")
+}
+//calls the test for User function
+testUser()
+
+
 
 
 
@@ -32,12 +64,21 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
   $scope.boardArray = "";
   $scope.fetchBoards = function () {
     getFactory.getBoards().then((data) => {
+//filter by current user
 
+      let currentUserId = firebase.auth().currentUser
+      console.log("currentUser", currentUserId)
       $scope.boardNames = data.data;
 
       Object.keys($scope.boardNames).forEach(function(id) {
-        $scope.boardArray += $scope.boardNames[id].title + ", ";
-      });
+        console.log("id", id)
+        console.log("scopeboarNames[id]", $scope.boardNames[id])
+        if($scope.boardNames[id].uid === currentUserId.uid) {
+          $scope.boardArray += $scope.boardNames[id].title + ", ";
+          }
+        })
+      console.log("boardArray", $scope.boardArray)
+      // });
 
     }).then(function()  {
 
@@ -273,8 +314,5 @@ $scope.goToBoards = ()=>{
       fullscreen: $scope.customFullscreen,
     });
   };
-
-
-
 
 }) //end of ThirdCtrl
