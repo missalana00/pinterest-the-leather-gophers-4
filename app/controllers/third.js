@@ -32,12 +32,21 @@ $scope.UserName = firebase.auth().currentUser.email
   $scope.boardArray = "";
   $scope.fetchBoards = function () {
     getFactory.getBoards().then((data) => {
+//filter by current user
 
+      let currentUserId = firebase.auth().currentUser
+      console.log("currentUser", currentUserId)
       $scope.boardNames = data.data;
 
       Object.keys($scope.boardNames).forEach(function(id) {
-        $scope.boardArray += $scope.boardNames[id].title + ", ";
-      });
+        console.log("id", id)
+        console.log("scopeboarNames[id]", $scope.boardNames[id])
+        if($scope.boardNames[id].uid === currentUserId.uid) {
+          $scope.boardArray += $scope.boardNames[id].title + ", ";
+          }
+        })
+      console.log("boardArray", $scope.boardArray)
+      // });
 
     }).then(function()  {
 
