@@ -31,8 +31,10 @@ app.config(($routeProvider, $locationProvider, $mdIconProvider) => {
          authReady()
            if (!user) {
              $('.logoutButton').addClass('ng-hide')
+             $('.logInButton').removeClass("ng-hide")
            } else if (user) {
              $('.logoutButton').removeClass("ng-hide")
+             $('.logInButton').addClass("ng-hide")
            }
 
       }) //authReady
