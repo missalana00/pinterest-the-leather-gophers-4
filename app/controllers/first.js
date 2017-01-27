@@ -68,7 +68,7 @@ app.controller("FirstCtrl", function($scope, getFactory, $mdDialog, toastFactory
 
   $scope.showAdvanced = function(ev) {
     if(firebase.auth().currentUser === null) {
-      toastFactory.toastMaker("you must be logged in to save a pin", "top")
+      toastFactory.toastMaker("you must be logged in to view a pin", "top")
       return
     }
     //console.log(ev.path[2].children[0].src);
