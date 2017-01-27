@@ -13,16 +13,19 @@ function tryAgain() {
 //once a user is found, run these two functions
   $scope.UserName = firebase.auth().currentUser.email
   $scope.refresh()
+  //hide the progress bar
   $(".progressBar").addClass("ng-hide")
 
 }
 //test for current user, if not found, will call tryagain function
 function testUser() {
   if(firebase.auth().currentUser === null) {
+    $(".progressBar").removeClass("ng-hide")
     tryAgain()
     return
   }
   $scope.UserName = firebase.auth().currentUser.email
+  //hide the progress bar
   $(".progressBar").addClass("ng-hide")
 }
 //calls the test for User function
@@ -311,29 +314,5 @@ $scope.goToBoards = ()=>{
       fullscreen: $scope.customFullscreen,
     });
   };
-
-// function progress() {
-//       var self = this;
-
-//       self.activated = true;
-//       self.determinateValue = 30;
-
-//       // Iterate every 100ms, non-stop and increment
-//       // the Determinate loader.
-//       $interval(function() {
-
-//         self.determinateValue += 1;
-//         if (self.determinateValue > 100) {
-//           self.determinateValue = 30;
-//         }
-
-//       }, 100);
-//     }
-
-
-
-
-
-
 
 }) //end of ThirdCtrl
