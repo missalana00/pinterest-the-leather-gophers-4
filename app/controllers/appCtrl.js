@@ -20,6 +20,8 @@ app.controller("AppCtrl", function($scope, $location) {
         firebase.auth().signOut()
         $location.url("login")
       $scope.currentNavItem = 'page2';
+      $('.logoutButton').addClass('ng-hide')
+      $('.logInButton').removeClass("ng-hide")
     }
 
 
