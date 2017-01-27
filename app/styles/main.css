@@ -112,3 +112,9 @@ User Profile Page
 .userBoard {
   padding: 2% 5%;
 }
+
+.githubImg {
+  height: 40px;
+  width: 40px;
+  margin-left: 2em;
+}
