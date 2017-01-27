@@ -4,18 +4,18 @@ app.controller("ThirdCtrl", function($scope ,$mdDialog, getFactory, createBoardF
 
 
 function tryAgain() {
-  console.log("current user", firebase.auth().currentUser)
+  //if there is not current user, wait .5 sec, then try checking for one again
   if(firebase.auth().currentUser === null) {
     console.log("trying again")
     setTimeout(tryAgain, 500)
     return
     }
-
+//once a user is found, run these two functions
   $scope.UserName = firebase.auth().currentUser.email
   $scope.refresh()
 
 }
-
+//test for current user, if not found, will call tryagain function
 function testUser() {
   if(firebase.auth().currentUser === null) {
     tryAgain()
@@ -23,7 +23,7 @@ function testUser() {
   }
   $scope.UserName = firebase.auth().currentUser.email
 }
-
+//calls the test for User function
 testUser()
 
 
