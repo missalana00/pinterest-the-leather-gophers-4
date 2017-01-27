@@ -13,7 +13,7 @@
         <md-grid-tile ng-repeat="pin in pins" ng-mouseover="open = true" ng-mouseleave="open = false" class="card" md-rowspan="{{ pin.rowspan }}" md-colspan="2" md-colspan-sm="2" md-colspan-xs="2">
 
           <img src="{{ pin.img }}" alt="">
-          <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">Save</md-button>
+          <md-button class="md-raised md-warn saveButton" ng-show="open" ng-click="showAdvanced($event)">View</md-button>
           <md-grid-tile-footer ng-show="open">
             <h3>{{ pin.title }}</h3>
           </md-grid-tile-footer>
